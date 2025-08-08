@@ -1,0 +1,4 @@
+(t=>{console.warn("----------  03-data-remove-data.js  ----------");var a=t("#capa");let i=t("#infoCapa"),n=t("#infoAcumula");a.data("dato","1234").removeData("usuario"),i.append(`<h3>usuario: ${a.data("usuario")??"undefined"}</h3>`),i.append(`<h3>dato: ${a.data("dato")}</h3><br>`),t("#capa, #acumula").on("click",function(){var a=t(this),c=a.attr("id"),e="capa"===c?i:n,o=a.data("numclics")||0,a=(10==++o?a.removeData("numclics"):a.data("numclics",o),console.log(`Clic #${o} en div: #`+c),`
+            <h3 class="texto-info">Nº de clicks: ${o}, en el div: ${c}</h3>
+            <h3 class="texto-info">Llevamos: ${o}, clics en el div: ${c}</h3>
+        `);e.html(a)})})(jQuery);

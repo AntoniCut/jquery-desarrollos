@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>Prueba unwrap(), wrap(), wrapAll() y wrapInner()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              $("#b_wrap").click(function(){
+                 $("p").wrap("<div></div>");
+                 $(this).attr('disabled','true');
+                 $("#b_wrapAll").attr('disabled','true');
+                 $("#b_wrapInner").attr('disabled','true');                 
+                 $("#b_unwrap").removeAttr("disabled");
+              });
+              $("#b_unwrap").click(function(){
+                 $("p").unwrap();
+                 $("p").each(function() {
+                    $(this).html($(this).text());
+                 });
+                 $(this).attr('disabled','true');
+                 $("#b_wrap").removeAttr("disabled");
+                 $("#b_wrapAll").removeAttr("disabled");
+                 $("#b_wrapInner").removeAttr("disabled");                 
+              });
+              $("#b_wrapAll").click(function(){
+                 $("p").wrapAll("<div></div>");
+                 $(this).attr('disabled','true');
+                 $("#b_wrap").attr('disabled','true');
+                 $("#b_wrapInner").attr('disabled','true');                                  
+                 $("#b_unwrap").removeAttr("disabled");
+              });
+              $("#b_wrapInner").click(function(){
+                 $("p").wrapInner("<b></b>");
+                 $(this).attr('disabled','true');
+                 $("#b_wrap").attr('disabled','true');
+                 $("#b_wrapAll").attr('disabled','true');                 
+                 $("#b_unwrap").removeAttr("disabled");
+              });
+           });</script><style>div { background:#58FAF4; }</style></head><body><p id="uno">Uno</p><p id="dos">Dos</p><input type="button" value="wrap" id="b_wrap"> <input type="button" value="unwrap" id="b_unwrap" disabled="true"> <input type="button" value="wrapAll" id="b_wrapAll"> <input type="button" value="wrapInner" id="b_wrapInner"></body></html>

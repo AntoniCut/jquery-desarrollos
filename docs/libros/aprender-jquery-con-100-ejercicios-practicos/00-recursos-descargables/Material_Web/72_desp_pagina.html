@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title>Prueba - Desplazamiento pagina</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        var conta=0;
+        $('html, body').animate({scrollTop:0,scrollLeft:0});
+        $(window).scroll(function(){
+          $("body").append('<div class=\"c1\" id=\"c1\" style="display:none">texto provis</div>').fadeIn(5000,function(){
+            var o=$("#c1").offset();
+            var w=$(window).width();
+            var h=$(window).height();
+            var mw=parseInt(w/2);
+            var mh=parseInt(h/2);
+            var mw_c1=parseInt($("#c1").width()/2);
+            var mh_c1=parseInt($("#c1").height()/2);
+            var x=$(window).scrollLeft()+mw-mw_c1;
+            var y=$(window).scrollTop()+mh-mh_c1;
+            var texto="w: " + w;
+            texto+=" h: " + h;
+            texto+="<br>mw: " + mw;
+            texto+=" mh: " + mh;
+            texto+="<br>x: " + x;
+            texto+=" y: " + y;
+            $("#c1").html(texto);
+            o.top=y;
+            o.left=x;
+            $("#c1").offset(o);
+            $("#c1").show().fadeOut(5000);
+            conta+=1;
+            $(".conte").html($(".conte").html() + "<h2>" + conta + "</h2>" + texto + "<hr>");
+          });
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div.conte    {width: 400px; height:4000px; border-style:solid; border-width:1px; overflow:auto;
+      background-color:#58FAF4;margin:1px;padding:1px;}
+      div.c1    {border-style:solid; border-width:1px;
+      background-color:yellow;margin:1px;padding:1px;}
+      .cb         {width: 188px; height:30px;}
+      .cbr        {width: 100px; height:30px;}</style></head><body><table border="1"><tr><td><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table><br><div class="conte"><span>Valores:</span></div></body></html>

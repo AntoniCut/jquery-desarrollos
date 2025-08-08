@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><head><title>Prueba - plug-in - Acordeon</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+         var velocidad=100;
+         $(".conte").hide();         
+         $(".eti").click(function(){
+           $(this).next(".conte").slideToggle(velocidad)
+            .siblings(".conte:visible").slideUp(velocidad);
+         });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>#pral      {width:400px; border-style:outset;border-color:#BDBDBD;border-width:20px;}
+      .eti       {background-color: #2ECCFA;color: #122A0A;cursor: pointer;font-size: 30px;
+                   font-weight: normal; height: 1.5em;line-height: 1.5em;position: relative;}
+      .eti:hover {background-color: #0040FF;color: #FFF;}
+      .conte     {background-color: #F2F5A9;font-size: 20px;}            
+      .cb        {width: 100px; height:30px;}
+      .cbr       {width: 190px; height:30px;}</style></head><body><center><input type="button" value="Reset" id="b_reset" class="cbr"><br><br><div id="pral"><div class="eti">Imagenes</div><div class="conte"><img id="i1" src="smile1.jpg" width="50px" height="50px"> <img id="i2" src="rana1.jpg" width="50px" height="50px"></div><div class="eti">Links</div><div class="conte"><b>Links de pruebas:</b><br><a href="http://www.google.com" title="Google">Google</a><br><a href="http://www.mango.com" title="Mango">Mango</a><br><a href="http://www.youtube.com" title="Youtube">Youtube</a><br><a href="http://www.uoc.edu" title="UOC">UOC</a><br></div><div class="eti">Video</div><div class="conte"><video width="320" height="240" controls><source src="clase_bateria.mp4" type="video/mp4"></video><br>Video de pruebas</div><div class="eti">Texto</div><div class="conte">En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivia un hidalgo de los de lanza en astillero adarga antigua, rocin flaco y galgo corredor...</div></div></center></body></html>

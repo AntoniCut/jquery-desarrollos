@@ -1,0 +1,1 @@
+(i=>{console.log("\n"),console.warn("----------  02-animate.js  ----------");var a=i("form");let o=i("#tamTexto"),l=i("#tamCaja"),m=i("#padding");a.on("submit",function(a){a.preventDefault();let n=i(this);var a=o.val(),e=l.val(),t=m.val();n.animate({fontSize:a,width:e,padding:t},4e3,function(){n.fadeOut(5e3),alert("Termino la animación!!!")})})})(jQuery);

@@ -1,0 +1,51 @@
+<html><head><title>Prueba eventos asociacion de un manejador</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+               $("#b_bind").click(function(){
+                  $("#t1").bind( "click dblclick", function(event) {
+                     $("#res1").html("(" + event.type + ") bind");
+                  });     
+                  $("#td1").removeClass("resKO").addClass("resOK");
+               });
+               $("#b_unbind").click(function(){
+                  $("#res1").html("");
+                  $("#t1").unbind("click dblclick"); 
+                  $("#td1").removeClass("resOK").addClass("resKO");                             
+               });    
+               $("#b_delegate").click(function(){
+                  $("#d1").delegate( "div","click dblclick", function(event) {
+                     $("#res2").html($(this).prop("id")+"-(" + event.type + ") delegate");
+                  });
+                  $("#td2").removeClass("resKO").addClass("resOK");                              
+               });       
+               $("#b_undelegate").click(function(){
+                  $("#res2").html("");
+                  $("#d1").undelegate("div","click dblclick"); 
+                  $("#td2").removeClass("resOK").addClass("resKO");                             
+               });      
+               $("#b_on1").click(function(){
+                  $("#t5").on("click dblclick", { nombre: "Uno" }, llena_span);
+                  $("#td5").removeClass("resKO").addClass("resOK");                           
+               });            
+               $("#b_on2").click(function(){
+                  $("#t6").on("click dblclick", { nombre: "Dos" }, llena_span);
+                  $("#td5").removeClass("resKO").addClass("resOK");                           
+               });  
+               $("#b_off").click(function(){
+                  $("#res3").html("");
+                  $("#t5").off("click dblclick");
+                  $("#td5").removeClass("resOK").addClass("resKO");                             
+               });
+               $("#b_t_bind").click(function(){$('#b_bind').trigger('click');});
+               $("#b_t_delegate").click(function(){$('#b_delegate').trigger('click');});                                                                                                            
+               $("#b_t_on1").click(function(){$('#b_on1').trigger('click');}); 
+               $("#b_triggerHandler").click(function(){$('#b_bind').triggerHandler('click');});
+               $("#b_reset").click(function(){location.reload();});
+               function llena_span(evento){$("#res3").html(evento.data.nombre);}
+            });</script><style>div    {margin:2px;padding=2px;border-style:groove;border-width:1px;}
+            .txt   {background-color:#2ECCFA;font-size:18px;}
+            .resOK {background-color:#81F781;font-size:18px;}
+            .resKO {background-color:#F5DA81;font-size:18px;}          
+            .cbr   {width: 392px; height:30px;}
+            .cb    {width: 115px; height:30px;}
+            .cbd   {width: 115px; height:85px;}
+            .cbt1   {width: 109px; height:30px;}
+            .cbt2   {width: 150px; height:30px;}</style></head><body><table border="1"><tr><td><input type="button" value="bind()" id="b_bind" class="cb"></td><td width="270" class="txt"><div><span id="t1">click, dobleclick (bind)</span></div></td></tr><tr><td><input type="button" value="unbind()" id="b_unbind" class="cb"></td><td width="270" class="resKO" id="td1"><div><span id="res1"></span></div></td></tr><tr><td><input type="button" value="delegate()" id="b_delegate" class="cbd"><br></td><td width="270" class="txt"><div id="d1"><div id="dd1"><span>dd1-click, dobleclick (delegate)</span></div><div id="dd2"><span>dd2-click, dobleclick (delegate)</span></div><div id="dd3"><span>dd3-click, dobleclick (delegate)</span></div></div></td></tr><tr><td><input type="button" value="undelegate()" id="b_undelegate" class="cb"></td><td width="270" class="resKO" id="td2"><div><span id="res2"></span></div></td></tr><tr><td><input type="button" value="on() - 1" id="b_on1" class="cb"><br><input type="button" value="on() - 2" id="b_on2" class="cb"></td><td width="270" class="txt"><div><span id="t5">Uno-click, dobleclick (on)</span></div><div><span id="t6">Dos-click, dobleclick (on)</span></div></td></tr><tr><td><input type="button" value="off()" id="b_off" class="cb"></td><td width="270" class="resKO" id="td5"><div><div><span id="res3"></span></div></div></td></tr><tr><td colspan="2"><table border="1"><tr><td><input type="button" value="trigger bind()" id="b_t_bind" class="cbt1"></td><td><input type="button" value="trigger delegate()" id="b_t_delegate" class="cbt1"></td><td><input type="button" value="triggerHandler bind()" id="b_triggerHandler" class="cbt2"></td></tr></table></td></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></body></html>

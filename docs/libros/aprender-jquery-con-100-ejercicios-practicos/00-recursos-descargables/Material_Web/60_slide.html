@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><title>Prueba - Efectos (slideDown(), slideUp() y slideToggle())</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var estado=true;
+            $("#b_slideUp").click(function(){
+               $("#d1").slideUp(2000);
+               resaltar("slideUp"); 
+            });
+            $("#b_slideDown").click(function(){
+               $("#d1").slideDown(2000);
+               resaltar("slideDown"); 
+            });       
+            $("#b_slideToggle").click(function(){
+               $("#d1").slideToggle(2000);
+               resaltar("slideToggle"); 
+            });                                 
+            $("#b_reset").click(function(){location.reload();});
+               function resaltar(texto){
+                  $("#res").html(texto).fadeOut(2000,'linear',function(){
+                  $(this).html("").fadeIn();
+               });  
+            } 
+         });</script><style>div    {width:200px;height:150px;background-color:#00BFFF;margin:1px; padding:1px; 
+            border-style:groove; border-width:5px; font-size:18px;overflow:auto;}
+    div#d1 {width: 160px;height:118px;background-color:#40FF00;margin:1px; padding:0px;
+            border-style:solid;border-width:3px; font-size:18px;}  
+    div#msg {width: 200px;height:30px;background-color:#80FF00;margin:1px;padding:1px;
+            border-style:solid;border-width:5px; font-size:25px;border-color:#0000FF; 
+            text-align:center;} 
+    div#dr {background-color:#FFFF00;overflow:auto;width:140px; height:356px;
+            font-size:14px;}                          
+    .cb    {width: 104px; height:30px;}
+    .cbr   {width: 214px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td colspan="2"><div><center><div id="d1"></div></center></div></td></tr><tr><td><input type="button" value="slideUp" id="b_slideUp" class="cb"></td><td><input type="button" value="slideDown" id="b_slideDown" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="slideToggle" id="b_slideToggle" class="cbr"></td></tr><tr><td colspan="2"><div id="msg"><font color="red"><span id="res"></font></div></td></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></center></body></html>

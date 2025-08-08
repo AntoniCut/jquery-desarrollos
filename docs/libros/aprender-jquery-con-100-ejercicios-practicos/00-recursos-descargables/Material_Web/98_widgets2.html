@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><title>Prueba -jQuery-UI-Widgets (2)</title><link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><link rel="stylesheet" href="/resources/demos/style.css"><script src="jquery.js"></script><script src="jquery-ui.js"></script><script type="text/javascript">$(document).ready(function(){
+        $(function() {
+          $("#menu").menu();
+          $("#slider").slider({
+            orientation: "horizontal",
+            range: "min",
+            animate:"slow",
+            min: 0,
+            max: 255,
+            value: 100,
+            slide: function(event,ui) {
+              $("#v_cantidad").val(ui.value);
+            }
+          });
+          $("#v_cantidad").val( $("#slider").slider("value") );
+          $( "#spinner" ).spinner(); 
+          $( "#tabs" ).tabs(); 
+          $(document).tooltip();                            
+        });
+        $("#b_progreso").click(function(){
+          var tope=500;
+          var conta=0;
+          var incremento=10;
+          var bp = $("#bp");
+          var eti = $(".eti");
+          bp.progressbar({
+            change: function() {
+              var actual=bp.progressbar("value");
+              eti.text( conta + " de " + tope + " / " + actual + "%" );
+            },
+            complete: function() {
+              eti.text("Carga completa!");
+            }
+          });
+          function act_barra() {
+            conta+=incremento;
+            val=(conta*100)/tope;
+            bp.progressbar( "value", val  );
+            if ( conta < tope ) {
+              setTimeout( act_barra, 100 );
+            }
+          }
+         act_barra();
+        });               
+        $("#menu li a").click(function(){
+          $("#v_op").val($(this).attr("href"));
+        });
+        $("#b_reset").click(function(){location.reload();});
+     });</script><style>#pral    {padding: 10px;width: 300px;height: 240px;}
+    #d1      {font-size: 10px;}
+    .ui-menu {width: 80px;}   
+    .ui-progressbar {position: relative;}    
+    .eti     {line-height: 30px;left: 30%;position: absolute;
+              font-weight: bold;text-shadow: 5px 5px 5px #0080FF;}    
+    .cbr     {width: 130px; height:30px;}</style></head><body><center><input type="button" value="Barra de progreso" id="b_progreso" class="cbr"> <input type="button" value="Reset" id="b_reset" class="cbr"></center><br><table border="2" bgcolor="#F3F781"><tr><td width="260" height="150" valign="top"><ul id="menu"><li><a href="#Uno">Uno</a><ul><li><a href="#A">A</a></li><li><a href="#B">B</a><ul><li><a href="#1">1 - <img id="i1" src="smile1.jpg" width="20px" height="20px"></a></li><li><a href="#2">2 - <img id="i1" src="rana1.jpg" width="20px" height="20px"></a></li><li><a href="#3">3 - <img id="i1" src="chincheta1.jpg" width="20px" height="20px"></a></li></ul></li><li><a href="#C">C</a></li></ul></li><li><a href="#Dos">Dos</a></li><li><a href="#Tres">Tres</a></li></ul></td><td><div class="ui-widget"><label>Opcion:</label></div></td><td><input type="text" id="v_op" size="4/"></td></tr><tr><td><div id="slider" style="width: 260px;"></div></td><td><div class="ui-widget"><label>Valor:</label></div></td><td><input type="text" id="v_cantidad" style="border: 0;" size="4/"></td></tr><tr></tr><tr><td><div class="ui-widget"><label>Valor del spinner:</label></div></td><td colspan="2"><input id="spinner" type="text" name="value" size="5"></td></tr><tr><td colspan="3"><div id="tabs"><ul><li><a href="#tab1"><span>Imagenes</span></a></li><li><a href="#tab2"><span>Links</span></a></li><li><a href="#tab3"><span>Video</span></a></li></ul><div id="tab1"><center><img id="i1" src="smile1.jpg" width="100px" height="100px"> <img id="i2" src="rana1.jpg" width="100px" height="100px"></center></div><div id="tab2"><b>Links de pruebas:</b><br><a href="http://www.google.com" title="Google">Google</a><br><a href="http://www.mango.com" title="Mango">Mango</a><br><a href="http://www.youtube.com" title="Youtube">Youtube</a><br><a href="http://www.uoc.edu" title="UOC">UOC</a><br><hr></div><div id="tab3"><center><video width="160" height="120" controls title="Haz click para ver c�mo se hace ruido."><source src="clase_bateria.mp4" type="video/mp4"></video><br>Video de pruebas</center></div></div></td></tr><tr><td colspan="3" height="50"><div id="bp"><div class="eti"></div></div></td></tr></table></body></html>

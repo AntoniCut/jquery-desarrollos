@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><title>Prueba - jQuery noConflict()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">var jq = jQuery.noConflict();
+      var vel=200;
+      jq(document).ready(function(){
+        jq("#b_fadeOI").click(function(){
+           jq("#i1").fadeOut(vel).fadeIn(vel);
+        });  
+        jq("#b_slideUD").click(function(){
+           jq("#i2").slideUp(vel).slideDown(vel);
+        });                                             
+        jq("#b_reset").click(function(){location.reload();});
+      });</script><style>div  {width:400px; border-style:outset;border-width:1px;}
+      .cb  {width: 130px; height:30px;}
+      .cbr {width: 130px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="fadeOut/fadeIn" id="b_fadeOI" class="cb"></td><td><input type="button" value="slideUp/slideDown" id="b_slideUD" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="3"><div id="d1"><center><img id="i1" src="smile1.jpg" width="100px" height="100px"> <img id="i2" src="rana1.jpg" width="100px" height="100px"></center></div></td></tr></table></center></body></html>

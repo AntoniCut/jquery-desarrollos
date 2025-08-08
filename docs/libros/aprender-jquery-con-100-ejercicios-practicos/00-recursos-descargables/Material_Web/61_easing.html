@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><title>Prueba - Efecto Easing</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.easing.js"></script><script type="text/javascript">$(document).ready(function(){
+                var vel=1000;
+                var tipo;
+                $("#b_nivel1").click(function(){
+                    get_tipo();
+                    $(".l1").slideToggle(vel,tipo);                 
+                });
+                $("#b_nivel2").click(function(){
+                    get_tipo();
+                    $(".l2").slideToggle(vel,tipo);                    
+                });
+                $("#b_nivel3").click(function(){
+                    get_tipo();                
+                    $(".l3").slideToggle(vel,tipo);                    
+                });        
+                $("#b_reset").click(function(){location.reload();});
+                function get_tipo(){
+                    tipo=$("#tipo").val();
+                }                
+            });</script><style>div#gral {background:#40FF00;height:160px;width:570px;
+                      margin:4px;padding:4px;border-width:1px;border-style:solid;}        
+            div.l1   {background:#00BFFF;height:140px;width:554px;font-size:25px;
+                      margin:2px;;padding:4px;border-width:1px;border-style:solid; 
+                      float:left;position:relative}
+            div.l2   {background:#00FFFF;height:90px;width:170px;font-size:18px;
+                      margin:2px;;padding:4px;border-width:1px;border-style:solid;
+                      float:left;position:relative}        
+            div.l3   {background:#58FA82;height:50px;width:50px;font-size:14px;
+                      margin:2px;border-width:1px;border-width:1px;border-style:solid;
+                      float:left;position:relative}                        
+            .cb      {width: 104px; height:30px;}
+            .cbr     {width: 214px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td><select id="tipo" style="width:130px"><option value="linear">linear</option><option value="swing">swing</option><option value="easeInOutQuad">easeInOutQuad</option><option value="easeInOutCubic">easeInOutCubic</option><option value="easeInOutQuart">easeInOutQuart</option><option value="easeInOutQuint">easeInOutQuint</option><option value="easeInOutExpo">easeInOutExpo</option><option value="easeInOutSine">easeInOutSine</option><option value="easeInOutCirc">easeInOutCirc</option><option value="easeInOutElastic">easeInOutElastic</option><option value="easeInOutBack">easeInOutBack</option><option value="easeInOutBounce" selected="selected">easeInOutBounce</option></select></td><td><input type="button" value="nivel1" id="b_nivel1" class="cb"></td><td><input type="button" value="nivel2" id="b_nivel2" class="cb"></td><td><input type="button" value="nivel3" id="b_nivel3" class="cb"></td><td><input type="button" value="reset" id="b_reset" class="cb"></td></tr></table><div id="gral"><div id="d1" class="l1">Juanto1<br><div id="d21" class="l2">Juanto21<br><div id="d31" class="l3">Juanto31 <img src="smile1.jpg" height="30" width="30"></div><div id="d32" class="l3">Juanto32</div><div id="d33" class="l3">Juanto33</div></div><div id="d22" class="l2">Juanto22<br><div id="d31" class="l3">Juanto31</div><div id="d32" class="l3">Juanto32 <img src="smile1.jpg" height="30" width="30"></div><div id="d33" class="l3">Juanto33</div></div><div id="d23" class="l2">Juanto23<br><div id="d31" class="l3">Juanto31</div><div id="d32" class="l3">Juanto32</div><div id="d33" class="l3">Juanto33 <img src="smile1.jpg" height="30" width="30"></div></div></div></div></center></body></html>

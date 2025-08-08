@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><title>Prueba - callbacks.lock() y callbacks.locked()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+         $("#b_fire").prop("disabled",true);
+         $("#b_lock").prop("disabled",true);
+         var cb=$.Callbacks();        
+         $("#b_f1").click(function(){f1("Uno");});  
+         $("#b_f2").click(function(){f2("Dos");});          
+         $("#b_add1").click(function(){incluir("f1");}); 
+         $("#b_add2").click(function(){incluir("f2");});     
+         $("#b_fire").click(function(){cb.fire("Generico");});                     
+         $("#b_lock").click(function(){cb.lock();});
+         $("#b_locked").click(function(){alert(cb.locked());});                
+         $("#b_reset").click(function(){location.reload();});
+         function f1(valor) {traza("f1 con valor (" + valor + ")");}
+         function f2(valor) {traza("f2 con valor (" + valor + ")");}
+         function traza(valor){
+            $("#res").html("<span>" + valor + "</span><br>"+$("#res").html());               
+            $("span").removeClass("cResaltar");
+            $("span").first().addClass("cResaltar");
+            var hay_f1= ($('#lista option[value="f1"]').length>0);
+            var hay_f2= ($('#lista option[value="f2"]').length>0);
+            if (hay_f1||hay_f2){
+               $("#b_fire,#b_lock").prop("disabled",false);
+            }else{
+               $("#b_fire, #b_lock").prop("disabled",true);
+            }           
+         }
+         function incluir(nomFuncion){
+            switch (nomFuncion){
+            case "f1": cb.add(f1);break;
+            case "f2": cb.add(f2);break;
+            }
+            incluir_lista(nomFuncion);
+         }
+         function incluir_lista(nomFuncion){
+            $('#lista').append('<option value="'+nomFuncion+'">'+nomFuncion+'</option>');
+            traza("Incluyo " + nomFuncion );            
+         }
+      });</script><style>div { margin:2px;padding:3px;}
+      img {width: 117px; height:117px;}    
+      .cb {width: 90px; height:30px;}
+      .cbr {width: 185px; height:30px;}      
+      .cbf {width: 90px; height:150px;}                    
+      .res {border-style:none;background-color:#F3F781;width: 225px; height:140px;
+            vertical-align:top;overflow-y:scroll;padding:3px;margin:2px;}
+      .cResaltar {background-color:#9FF781;margin:1px;padding:1px;}
+      p {background-color:#9FF781;margin:1px;padding:1px;height:50px;}</style></head><body><center><table border="2" style="border-color:#00BFFF"><tr><td><table border="2" style="border-color:#00BFFF"><tr><td><input type="button" value="f1" id="b_f1" class="cb"></td><td colspan="2"><input type="button" value="f2" id="b_f2" class="cb"></td></tr><tr><td><input type="button" value="add1" id="b_add1" class="cb"></td><td colspan="2"><input type="button" value="add2" id="b_add2" class="cb"></td></tr><tr><td><input type="button" value="lock" id="b_lock" class="cb"></td><td><input type="button" value="locked" id="b_locked" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr></table></td><td><input type="button" value="fire" id="b_fire" class="cbf"></td></tr></table><table border="1"><tr><td><div id="res" class="res"></div></td><td><table><tr><td><div><select id="lista" style="width: 40px;" size="5"></div></td></tr></table></td></tr></table></center></body></html>

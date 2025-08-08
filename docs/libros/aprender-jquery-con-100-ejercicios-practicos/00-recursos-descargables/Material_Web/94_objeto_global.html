@@ -1,0 +1,27 @@
+<!DOCTYPE html><html><head><title>Prueba - jQuery - objeto global</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $("#v1").html($.support.ajax);
+        $("#v2").html(jQuery.boxModel);        
+        $("#v3").html($.support.changeBubbles);
+        $("#v4").html($.support.checkClone);
+        $("#v5").html($.support.checkOn);
+        $("#v6").html($.support.cors);        
+        $("#v7").html($.support.cssFloat);
+        $("#v8").html($.support.hrefNormalized);
+        $("#v9").html($.support.htmlSerialize);
+        $("#v10").html($.support.leadingWhitespace);
+        $("#v11").html($.support.noCloneChecked);
+        $("#v12").html($.support.noCloneEvent);
+        $("#v13").html($.support.opacity);
+        $("#v14").html($.support.optDisabled);                
+        $("#v15").html($.support.optSelected);
+        $("#v16").html($.support.scriptEval);
+        $("#v17").html($.support.style);
+        $("#v18").html($.support.submitBubbles);                
+        $("#v19").html($.support.tbody);
+        $("#v20").html(navigator.appCodeName);
+        $("#v21").html(navigator.userAgent);                                
+        console.log(navigator);
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div  {width:400px; border-style:outset;border-width:1px;}
+      .cb  {width: 130px; height:30px;}
+      .cbr {width: 130px; height:30px;}</style></head><body><center><input type="button" value="Reset" id="b_reset" class="cbr"><br><br><table border="1"><tr><th>Propiedad</th><th>Valor</th></tr><tr><td>ajax</td><td><span id="v1"></td></tr><tr><td>boxModel</td><td><span id="v2"></td></tr><tr><td>changeBubbles</td><td><span id="v3"></td></tr><tr><td>checkClone</td><td><span id="v4"></td></tr><tr><td>checkOn</td><td><span id="v5"></td></tr><tr><td>cors</td><td><span id="v6"></td></tr><tr><td>cssFloat</td><td><span id="v7"></td></tr><tr><td>hrefNormalized</td><td><span id="v8"></td></tr><tr><td>htmlSerialize</td><td><span id="v9"></td></tr><tr><td>leadingWhitespace</td><td><span id="v10"></td></tr><tr><td>noCloneChecked</td><td><span id="v11"></td></tr><tr><td>noCloneEvent</td><td><span id="v12"></td></tr><tr><td>opacity</td><td><span id="v13"></td></tr><tr><td>optDisabled</td><td><span id="v14"></td></tr><tr><td>optSelected</td><td><span id="v15"></td></tr><tr><td>scriptEval()</td><td><span id="v16"></td></tr><tr><td>style</td><td><span id="v17"></td></tr><tr><td>submitBubbles</td><td><span id="v18"></td></tr><tr><td>tbody</td><td><span id="v19"></td></tr><tr><td>navigator.appCodeName</td><td><span id="v20"></td></tr><tr><td>navigator.userAgent</td><td><span id="v21"></td></tr></table></center></body></html>

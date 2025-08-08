@@ -1,0 +1,1 @@
+(e=>{console.log("\n"),console.warn("----------  01-metodo-on.js  ----------"),e(".div").on("click",function(){let t="";var o=e(this);t=o.data("textoanterior")?o.data("textoanterior"):"hiciste clic",o.data("textoanterior",o.text()),o.text(t)})})(jQuery);

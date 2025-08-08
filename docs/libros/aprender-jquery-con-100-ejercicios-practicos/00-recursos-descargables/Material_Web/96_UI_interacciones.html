@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head><title>Prueba -jQuery-UI-Interacciones</title><link rel="stylesheet" href="jquery-ui.css"><script src="jquery.js"></script><script src="jquery-ui.js"></script><script type="text/javascript">$(document).ready(function(){
+        var vel=2000;
+        var conta=0;
+        var o = $("#pral").offset();
+        o.left=o.left+($("#pral").width()/2)-($("#muestra").width()/2);
+        o.top=o.top+($("#pral").height()/2)-($("#muestra").height()/2);
+        $(function() {
+          $("div").not("#pral").draggable().resizable().selectable();
+          $(".contenedor").droppable({
+            drop: function( event, ui ) {
+              $(this).addClass("marco");
+              $(this).fadeOut(vel).fadeIn(vel,function(){
+              $(this).removeClass("marco");
+              });
+              }
+          });  
+          $("#lista1").selectable();
+          $("#lista2").sortable();                   
+        });
+        $("#b_nuevo_cua").click(function(){
+          conta+=1;
+          $("<div class=\"ui-widget-content uni cuadrado\">" + conta + "</div>")
+          .appendTo("#pral").offset(o)
+          .draggable()
+          .resizable()
+          .css("background",color());                 
+        });
+        $("#b_nuevo_red").click(function(){
+          conta+=1;
+          $("<div class=\"ui-widget-content uni redondo\">" + conta + "</div>")
+          .appendTo("#pral").offset(o)
+          .draggable()
+          .resizable()
+          .css("background",color());                 
+        });     
+        $("#b_reset").click(function(){location.reload();});
+        function color(){
+          var res="";
+          r=Math.floor((Math.random()*255)+1);
+          g=Math.floor((Math.random()*255)+1);
+          b=Math.floor((Math.random()*255)+1);
+          res="rgb("+r+","+g+","+b+")";
+          return res;
+        }
+     });</script><style>#pral      {width: 520px; height: 300px; background-color:#A9F5F2;padding:10px}  
+    #conte1    {width: 140px; height: 140px; background-color:#F5D0A9;opacity:0.5;position:inherit;left:0px;float:left} 
+    #conte2    {width: 140px; height: 140px; background-color:#F4FA58;opacity:0.5;position:inherit;left:50px;float:left} 
+    #conte3    {width: 140px; height: 140px; background-color:#2ECCFA;opacity:0.5;position:inherit;left:190px}     
+    .marco      {border-color:red;border-width:1px;border-style:solid;}             
+    .uni       {width: 40px; height: 40px; background-color:#FFFF00;border-style:outset;
+                border-width:5px;padding:5px;gmargin:5px;border-color:blue;}
+    .uni:hover {cursor:pointer}
+    .cuadrado  {border-radius:10px 10px 10px 10px;-moz-border-radius:10px 10px 10px 10px;
+               -webkit-border-radius:10px 10px 10px 10px;o-border-radius:10px 10px 10px 10px;}  
+    .redondo   {border-radius:100px 100px 100px 100px;-moz-border-radius:100px 100px 100px 100px;
+               -webkit-border-radius:100px 100px 100px 100px;o-border-radius:100px 100px 100px 100px;}
+    #lista1 .ui-selecting { background: #CEE3F6; }
+    li:hover              {cursor:pointer}
+    #lista1 .ui-selected  { background: #5882FA; color: white; }
+    ol                    {list-style-type: none; margin: 0; padding: 0; width: 200px; }
+    li                    {margin: 1px; padding: 0.5em; font-size: 18px; height: 12px; }  
+    #lista2 li span       { position: absolute; margin-left: -1.5em; }
+    #lista2 li:hover      { background: #5882FA; color: white;}    
+    .cbr                  {width: 130px; height:30px;}</style></head><body><center><input type="button" value="Cuadrado" id="b_nuevo_cua" class="cbr"> <input type="button" value="Redondo" id="b_nuevo_red" class="cbr"> <input type="button" value="Reset" id="b_reset" class="cbr"><br><br><div id="pral" style="z-index:-2"><div id="conte1" class="contenedor" style="z-index:0;position:relative"></div><div id="conte2" class="contenedor" style="z-index:0"></div><div id="conte3" class="contenedor" style="z-index:0"></div><div id="muestra" class="ui-widget-content uni cuadrado" style="z-index:0">0</div></div><br><table border="1" bgcolor="#BEF781"><tr><th>Selectable</th><th>Sortable</th></tr><tr><td><ol id="lista1"><li class="ui-widget-content">Opcion 1</li><li class="ui-widget-content">Opcion 2</li><li class="ui-widget-content">Opcion 3</li><li class="ui-widget-content">Opcion 4</li><li class="ui-widget-content">Opcion 5</li></ol></td><td><ol id="lista2"><li class="ui-state-default">Opcion 1</li><li class="ui-state-default">Opcion 2</li><li class="ui-state-default">Opcion 3</li><li class="ui-state-default">Opcion 4</li><li class="ui-state-default">Opcion 5</li></ol></td></tr></table></center></body></html>

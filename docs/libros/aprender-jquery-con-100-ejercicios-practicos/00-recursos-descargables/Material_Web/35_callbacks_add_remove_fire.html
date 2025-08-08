@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>Prueba - callbacks add, remove y fire</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+         $("#b_remove1").prop("disabled",true);
+         $("#b_remove2").prop("disabled",true);
+         $("#b_remove12").prop("disabled",true);
+         $("#b_fire").prop("disabled",true);            
+         var cb=$.Callbacks();        
+         $("#b_f1").click(function(){f1();});  
+         $("#b_f2").click(function(){f2();});          
+         $("#b_add1").click(function(){incluir("f1");}); 
+         $("#b_add2").click(function(){incluir("f2");});     
+         $("#b_add12").click(function(){
+            cb.add(f1,f2);
+            incluir_lista("f1");incluir_lista("f2");               
+         });              
+         $("#b_fire").click(function(){cb.fire();});                 
+         $("#lista").change(function(){$("#b_remove").prop("disabled",false);});  
+         $("#lista").dblclick(function(){
+           var nf=$("#lista").val();
+           eliminar(nf);
+         });              
+         $("#b_remove1").click(function(){eliminar("f1");});                       
+          $("#b_remove2").click(function(){eliminar("f2");});      
+          $("#b_remove12").click(function(){
+            cb.remove(f1,f2);
+            eliminar_lista("f1");eliminar_lista("f2");               
+          });                     
+         $("#b_reset").click(function(){location.reload();});
+         function f1() {
+            $("#d1").slideUp().slideDown(function(){ 
+               traza("He ejecutado f1");
+            });  
+         }
+         function f2() {
+            $("#d1").fadeOut().fadeIn(function(){ 
+               traza("He ejecutado f2");
+            });                 
+         }
+         function traza(valor){
+            $("#res").html("<span>" + valor + "</span><br>"+$("#res").html());               
+            $("span").removeClass("cResaltar");
+            $("span").first().addClass("cResaltar");
+            var hay_f1= ($('#lista option[value="f1"]').length>0);
+            var hay_f2= ($('#lista option[value="f2"]').length>0);
+            $("#b_remove1").prop("disabled",!(hay_f1));                   
+            $("#b_remove2").prop("disabled",!(hay_f2));    
+            if (hay_f1||hay_f2){
+               $("#msg").html("Dobleclick para<br> eliminar funcion");
+               $("#b_fire").prop("disabled",false);
+               $("#b_remove12").prop("disabled",false);
+            }else{
+               $("#msg").html("");
+               $("#b_fire").prop("disabled",true);
+               $("#b_remove12").prop("disabled",true);
+            }           
+         }
+         function incluir(nomFuncion){
+            switch (nomFuncion){
+            case "f1":
+               cb.add(f1);break;
+            case "f2":
+               cb.add(f2);break;
+            }
+            incluir_lista(nomFuncion);
+         }
+         function incluir_lista(nomFuncion){
+            $('#lista').append('<option value="'+nomFuncion+'">'+nomFuncion+'</option>');
+            traza("Incluyo " + nomFuncion );            
+         }
+         function eliminar_lista(nomFuncion){
+            $('#lista option[value="'+nomFuncion+'"]').remove();
+            traza("Elimino "+nomFuncion);            
+         }            
+         function eliminar(nomFuncion){
+            switch (nomFuncion){
+            case "f1":
+               cb.remove(f1);break;
+            case "f2":
+               cb.remove(f2);break;
+            }
+            eliminar_lista(nomFuncion);                            
+         }            
+      });</script><style>div { margin:2px;padding:3px;}
+      img {width: 117px; height:117px;}    
+      .cb {width: 120px; height:30px;}
+      .cb2 {width: 246px; height:30px;}
+      .cbr {width: 385px; height:30px;}     
+      .cbf {width: 120px; height:190px;}                    
+      .res {border-style:none;background-color:#F3F781;width: 120px; height:140px;
+            vertical-align:top;overflow-y:scroll;padding:3px;margin:2px;}
+      .cResaltar {background-color:#9FF781;margin:1px;padding:1px;}
+      p {background-color:#9FF781;margin:1px;padding:1px;height:50px;}</style></head><body><center><table border="2" style="border-color:#00BFFF"><tr><td><table border="2" style="border-color:#00BFFF"><tr><td><input type="button" value="f1" id="b_f1" class="cb"></td><td><input type="button" value="f2" id="b_f2" class="cb"></td></tr><tr><td><input type="button" value="add1" id="b_add1" class="cb"></td><td><input type="button" value="add2" id="b_add2" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="add 1+2" id="b_add12" class="cb2"></td></tr><tr><td><input type="button" value="remove1" id="b_remove1" class="cb"></td><td><input type="button" value="remove2" id="b_remove2" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="remove 1+2" id="b_remove12" class="cb2"></td></tr></table></td><td><input type="button" value="fire" id="b_fire" class="cbf"></td></tr><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr></table><table border="1" id="imagenes"><tr><td style="height:140px;"><div id="d1"><img src="smile1.jpg"></div></td><td><div id="res" class="res"></div></td><td><table><tr><td><div><select id="lista" style="width: 100px;" size="5"></div></td></tr><tr><td style="height:30px"><center><p id="msg" align="center"></p></center></td></tr></table></td></tr></table></center></body></html>

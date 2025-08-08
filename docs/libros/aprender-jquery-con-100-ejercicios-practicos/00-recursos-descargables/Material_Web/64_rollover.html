@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><title>Prueba - Efecto rollover</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var destino;
+            $('img').hover(
+               function() {
+                  destino = ($(this).attr("id")=="i2") ? "smile1.jpg" : "rana1.jpg";
+                  $(this).fadeOut("fast",function(){
+                     $(this).attr("src",destino);
+                     $(this).fadeIn(3000);
+                  });
+               },
+               function() {
+                  destino = ($(this).attr("id")=="i2") ? "rana1.jpg" : "smile1.jpg";  
+                  $(this).slideUp("fast",function(){
+                     $(this).attr("src",destino);
+                     $(this).slideDown(3000);
+                  });                  
+               }
+            );            
+            $("#b_reset").click(function(){location.reload();});
+         });</script><style>div   {width: 205px; height:205px;} 
+    .cbr   {width: 420px; height:30px;} 
+    .centrado_smile {height: 100px; top: 50%; margin-top: -50px; position: relative;}</style></head><body><center><table border="1"><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr><tr><td align="center"><div><img id="i1" class="centrado_smile" src="smile1.jpg" width="100px" height="100px"></div></td><td align="center"><div><img id="i2" src="rana1.jpg" width="200px" height="200px"></div></td></tr></table></center></body></html>

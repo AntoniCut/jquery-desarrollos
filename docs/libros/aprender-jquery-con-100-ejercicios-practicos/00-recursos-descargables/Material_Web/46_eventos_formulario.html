@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><title>Prueba - Eventos de formulario</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            $(":input[type='button']").addClass("cb");     
+            $("#t1").blur(function() {
+               $("#res1").html("Pierde el foco.").slideUp(500).slideDown(500);
+            });        
+            $("#s1").change(function() {
+               $("#res2").html("Cambia seleccion: "+ $(this).prop("value")).slideUp(500).slideDown(500);
+            });     
+            $("#t1").focus(function() {
+               $("#res1").html("Obtiene el foco.").slideUp(500).slideDown(500);
+            });   
+            $("#t1").select(function() {
+               $("#res1").html("Selecciona texto.").slideUp(500).slideDown(500);
+            });  
+            $("form").submit(function(e) {
+               e.preventDefault();
+               $("#res3").html("Submit").slideUp(500).slideDown(500);
+            });                                                                   
+            $("#b_reset").click(function(){location.reload();});
+         });</script><style>div    {background-color:#58D3F7;margin:2px;padding:2px;border-style:groove;
+                 border-width:1px; width: 210px;height:30px;font-size:18px;text-align:center;}
+         .cb    {width: 178px; height:30px;}
+         .cbr   {width: 402px; height:30px;}</style></head><body><center><table border="1"><tr><td width="180"><input id="t1" type="text" value="Texto a seleccionar"></td><td><div><span id="res1"></span></div></td></tr><tr><td><select id="s1" class="target" style="width:160px"><option value="Uno" selected="selected">Uno</option><option value="Dos">Dos</option><option value="Tres">Tres</option></select></td><td><div><span id="res2"></span></div></td></tr><tr><form><td><input type="submit" value="submit" id="b_submit" class="cb"></td><td><div><span id="res3"></span></div></td></form></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></center></body></html>

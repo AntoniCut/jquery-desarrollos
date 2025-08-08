@@ -1,0 +1,127 @@
+<!DOCTYPE html><html><head><title>Prueba - Tama�o, posici�n y dimensiones</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        var sw_mover=0;
+        var v_inter;
+        var vel=3;
+        var inc_x=1;
+        var inc_y=1;
+        var tope_w_marco=700;
+        var tope_h_marco=500;        
+        $("#b_mas_marco").click(function(){
+           $("#marco").width($("#marco").width()+6);
+           $("#marco").height($("#marco").height()+4);
+           if ($("#marco").width() > tope_w_marco){
+              $("#marco").width(tope_w_marco);
+           }         
+           if ($("#marco").height() > tope_h_marco){
+              $("#marco").height(tope_h_marco);
+           }                
+        });  
+        $("#b_menos_marco").click(function(){
+           $("#marco").width($("#marco").width()-6);
+           $("#marco").height($("#marco").height()-4); 
+           if ($("#marco").width() < 42){
+              $("#marco").width(42);
+           }         
+           if ($("#marco").height() < 28){
+              $("#marco").height(28);
+           }            
+           if ($("#pelota").height() > $("#marco").height()) {
+              $("#pelota").width($("#marco").height());
+              $("#pelota").height($("#marco").height());
+           }            
+        });       
+        $("#b_mas_pelota").click(function(){
+           $("#pelota").width($("#pelota").width()+4);
+           $("#pelota").height($("#pelota").height()+4); 
+           if ($("#pelota").height() > $("#marco").height()){
+              $("#pelota").height($("#marco").height());
+              $("#pelota").width($("#marco").height());              
+           }                 
+           $("#pelota").css("border-radius",($("#pelota").width()/2)+"px");
+        });  
+        $("#b_menos_pelota").click(function(){
+           $("#pelota").width($("#pelota").width()-4);
+           $("#pelota").height($("#pelota").height()-4);
+           if ($("#pelota").height() < 6){
+              $("#pelota").height(6);
+              $("#pelota").width(6);              
+           }                         
+        });          
+        $("#b_arranque").click(function(){
+           if (sw_mover==0){
+              v_inter= setInterval(function() {
+                 animar();    
+              }, vel);
+              sw_mover=1;
+           }
+        });
+        $("#b_parada").click(function(){
+           sw_mover=0;
+           clearInterval(v_inter);
+        });        
+        $(document).keydown(function(tecla){
+            if (tecla.keyCode == 38) {
+                $("#b_mas_marco").click();
+            }else if(tecla.keyCode == 40) {
+                $("#b_menos_marco").click();
+            }else if(tecla.keyCode == 39) {
+                $("#b_mas_pelota").click();
+            }else if(tecla.keyCode == 37) {
+                $("#b_menos_pelota").click();                                
+            }else if(tecla.keyCode == 65){
+                $("#b_arranque").click();
+            }else if(tecla.keyCode == 80){
+                $("#b_parada").click();                
+            }
+        });        
+
+        $("#b_reset").click(function(){location.reload();});
+        function animar(){
+        // Dimensiones de la pelota 
+        var w_pelota=$("#pelota").width();
+        var h_pelota=$("#pelota").height();
+        // Dimensiones del marco
+        var off_marco=$("#marco").offset();
+        var x_ini_marco=off_marco.left;
+        var y_ini_marco=off_marco.top; 
+        var x_fin_marco=  x_ini_marco +  $("#marco").width() - w_pelota + 1;  
+        var y_fin_marco=  y_ini_marco +  $("#marco").height() - h_pelota + 1; 
+        
+        var off_pel=$("#pelota").offset();
+        var y = off_pel.top;
+        var x = off_pel.left;
+
+        if (y + inc_y < y_ini_marco) {
+           inc_y = -inc_y;
+           y = y_ini_marco;
+        }
+        if (y + inc_y > y_fin_marco) {
+           inc_y = -inc_y;
+           y = y_fin_marco;
+        }         
+               
+        if (x + inc_x < x_ini_marco){
+           inc_x = -inc_x;
+           x = x_ini_marco;
+        } 
+        if (x + inc_x > x_fin_marco){
+           inc_x = -inc_x;
+           x = x_fin_marco;
+        }                 
+        x += inc_x;
+        y += inc_y;
+        //console.log("x: " + x + " y: " + y);
+        off_pel.top = y;
+        off_pel.left = x;
+        $("#pelota").offset(off_pel);
+        }
+        
+      });</script><style>div#marco   {width: 200px; height:200px; border-style:solid; border-width:1px; background-color:#58FAF4}
+      div#pelota   {width: 20px; height:20px;background-color:#0040FF;border-radius: 60px;}
+      div#res {width: 200px;height:170px;background-color:#FFFF00;margin:1px;padding:1px;
+             border-style:solid;border-width:1px; font-size:25px;border-color:#0000FF; 
+             text-align:center;} 
+      
+      .cbs {width: 90px; height:30px;}
+      .cb {width: 188px; height:30px;}              
+      .cbr   {width: 382px; height:30px;}</style></head><body><center><table border="1"><tr><td><table border="1"><tr><td colspan="2" bgcolor="#82FA58"><center>Dim marco</center></td><td colspan="2" bgcolor="#82FA58"><center>Dim pelota</center></td></tr><tr><td><input type="button" value="Up=mas" id="b_mas_marco" class="cbs"></td><td><input type="button" value="Down=menos" id="b_menos_marco" class="cbs"></td><td><input type="button" value="Right=mas" id="b_mas_pelota" class="cbs"></td><td><input type="button" value="Left=menos" id="b_menos_pelota" class="cbs"></td></tr><tr><td colspan="2"><input type="button" value="A=Arranque" id="b_arranque" class="cb"></td><td colspan="2"><input type="button" value="P=Parada" id="b_parada" class="cb"></td></tr><tr><td colspan="4"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></td><td><div id="res"></div></td></tr></table><div id="marco"><div id="pelota"></div></div></center></body></html>

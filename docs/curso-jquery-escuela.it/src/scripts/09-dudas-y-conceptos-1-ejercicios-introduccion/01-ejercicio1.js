@@ -1,0 +1,1 @@
+(n=>{console.log("\n"),console.warn("----------  01-ejercicio1.js  ----------"),n(".contenido p").each(function(o,e){n(e).text("Parrafo "+(o+1))})})(jQuery);

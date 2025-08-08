@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><title>Prueba - jQuery.get</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $.ajaxSetup({
+          async: true,
+          crossDomain: true,
+          success:function(result)
+          {$("#d1").text(result);}
+        });
+        $("#b_get").click(function(){
+           $.get("texto.txt", function(data){
+              $("#d1").html(data);
+           });
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 400px;
+      height:100px; font-size:20px}
+      .cb {width: 120px; height:30px;}
+      .cbr {width: 276px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="GET" id="b_get" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="2"><div id="d1">Aqui se incorpora el texto</div></td></tr></table></center></body></html>

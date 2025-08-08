@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head><title>Prueba html() y text()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              $("#b_html").click(function(){
+                 $("#res_p1").html("El contenido html es " + $("#p1").html());
+              });
+              $("#b_text").click(function(){
+                 $("#res_p1").html("El contenido text es " + $("#p1").text());
+              });
+           });</script><style>.c1 { color: blue; }
+            .c2 { color: green; }</style></head><body><p id="p1" class="c1"><b><i>Uno</i></b></p><p id="res_p1" class="c2"></p><input type="button" value="html" id="b_html"> <input type="button" value="text" id="b_text"></body></html>

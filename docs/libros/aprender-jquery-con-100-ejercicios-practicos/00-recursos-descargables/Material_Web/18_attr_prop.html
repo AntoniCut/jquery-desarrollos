@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><title>Prueba - attr(), prop(), removeAttr(), removeProp() y val()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            ponProp();
+            mostrarProp();
+            $("#slColor").change(function() {
+               $("#resultado1").html($(this).val());
+               $("#resultado1").attr("class",$(this).val());
+            });
+            $("#slDisabled").change(function() {
+               $("#resultado2").html($(this).val());
+               if ($("#slDisabled").val() == "true") {
+                  $("#slColor").prop("disabled",false);
+                  $("#resultado2").html("Puede seleccionar color");
+               }else{
+                  $("#slColor").prop("disabled",true);
+                  $("#resultado2").html("No puede seleccionar color");
+               };
+            });
+            $("#b_removeAttr").click(function(){
+               $("#resultado1").removeAttr("class");
+            });
+            $("#b_removeProp").click(function(){
+               $("#resultado3").removeProp("miprop");
+               mostrarProp();
+            });           
+            $("#b_ponProp").click(function(){
+               $("#resultado3").prop("miprop","personal");
+               mostrarProp();
+            });             
+            function ponProp() {
+                $("#resultado3").prop("miprop","personal");
+            }                
+            function mostrarProp() {
+                $("#resultado3").html("El valor de miprop es (" + $("#resultado3").prop("miprop") + ")");
+            }
+         });</script><style>.azul { color: blue;}
+         .verde { color: green;}
+         .rojo { color: red;}</style></head><body><select id="slColor" style="width: 110px;"><option>rojo</option><option>azul</option><option>verde</option></select> <input type="button" value="removeAttr" id="b_removeAttr" style="width: 110px;"><br>Color <span id="resultado1" class="rojo">rojo</span><hr><select id="slDisabled" style="width: 110px;"><option value="true">Habilitado</option><option value="false">Deshabilitado</option></select><br><span id="resultado2">Puede seleccionar color</span><hr><span id="resultado3" miprop="personal"></span><br><input type="button" value="Pon prop" id="b_ponProp" style="width: 110px;"> <input type="button" value="removeProp" id="b_removeProp" style="width: 110px;"></body></html>

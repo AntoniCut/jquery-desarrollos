@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><title>Prueba append() y appendTo()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              $("#b_append").click(function(){
+                 $("p").append("<div class=\"c1\">Texto adicional para append</div>");
+              });
+              $("#b_appendTo").click(function(){
+                 $("<div class=\"c2\">Texto adicional para appendTo</div>").appendTo("p");                 
+              });
+           });</script><style>p { color:blue; }
+            .c1 { color: green; }
+            .c2 { color: red; }</style></head><body><p id="uno">Uno</p><p id="dos">Dos</p><input type="button" value="append" id="b_append"> <input type="button" value="appendTo" id="b_appendTo"></body></html>

@@ -1,0 +1,1 @@
+(t=>{console.log("\n"),console.warn("----------  07-pagex-pagey.js  ----------");var e=t(".div");e.mouseenter(function(e){t(this).text(e.pageX+" X "+e.pageY)}),e.mouseleave(function(e){t(this).text("")}),e.click(function(e){t(this).text(e.pageX+" X "+e.pageY)})})(jQuery);

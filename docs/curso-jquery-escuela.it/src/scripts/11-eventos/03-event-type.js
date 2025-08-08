@@ -1,0 +1,1 @@
+(o=>{console.log("\n"),console.warn("----------  01-metodo-on.js  ----------"),o(".enlace").on("click dblclick mouseenter mouseleave focus blur",function(e){o(this).text(e.type)})})(jQuery);

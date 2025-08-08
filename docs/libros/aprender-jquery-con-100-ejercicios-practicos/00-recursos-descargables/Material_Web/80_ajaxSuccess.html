@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><title>Prueba - ajaxSuccess()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+      
+        $("#b_cargar").click(function(){
+           $.ajax({
+              url:    "texto.txt",
+              success:function(result){
+                 $("#d1").text(result);
+              }
+           });
+        });
+        $(document).ajaxSuccess(function(e,x,opc){
+           alert("Solicitud completada satisfactoriamente.");
+        });
+        
+        $("#b_reset").click(function(){
+          location.reload();
+        });
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 404px;height:100px; font-size:20px}
+      .cb {width: 200px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="Cargar" id="b_cargar" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cb"></td></tr><tr><td colspan="2"><div id="d1">Aqui se incorpora el texto</div></td></tr></table></center></body></html>

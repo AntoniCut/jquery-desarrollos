@@ -1,0 +1,46 @@
+<html><head><title>Prueba $.proxy()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+                  $("#b_ejecutar").prop("disabled",true);
+                  var ctx1 = {
+                  width: 30, height: 30,
+                  pon_val: function(event) {
+                    $("img").prop("height",this.height);
+                    $("img").prop("width",this.width);
+                    $("img").slideDown().slideUp().slideDown();
+                  }
+                  };
+                  var ctx2 = {
+                  width: 100, height: 100,
+                  pon_val: function(event) {
+                    $("img").prop("height",this.height);
+                    $("img").prop("width",this.width);
+                    $("img").fadeOut().fadeIn();
+                  }              
+                };
+               $("#d1").click(function(){
+                  $("#b_ejecutar").off("click").prop("disabled",false);
+                  $("div").removeClass("resaltar");
+                  $(this).addClass("resaltar");
+                  $("#b_ejecutar").on("click", $.proxy( ctx1.pon_val, ctx1 ));       
+               });  
+               $("#d2").click(function(){
+                  $("#b_ejecutar").off("click").prop("disabled",false);
+                  $("div").removeClass("resaltar");
+                  $(this).addClass("resaltar");
+                  $("#b_ejecutar").on("click", $.proxy( ctx2.pon_val, ctx2 ));        
+               });  
+               $("#d3").click(function(){
+                  $("#b_ejecutar").off("click").prop("disabled",false);
+                  $("div").removeClass("resaltar");
+                  $(this).addClass("resaltar");
+                  $("#b_ejecutar").on("click", $.proxy( ctx1.pon_val, ctx2 ));        
+               });                
+               $("#d4").click(function(){
+                  $("#b_ejecutar").off("click").prop("disabled",false);
+                  $("div").removeClass("resaltar");
+                  $(this).addClass("resaltar");
+                  $("#b_ejecutar").on("click", $.proxy( ctx2.pon_val, ctx1 ));        
+               }); 
+               $("#b_reset").click(function(){location.reload();});                         
+            });</script><style>div       {background-color:#2EFEF7;width:200px;height:40px} 
+         .resaltar {background-color:#00FF80;width:200px;height:40px}
+         .cbr      {width: 442px; height:50px;}</style></head><body><table border="1"><tr><td width="200"><table border="1"><tr><td><div id="d1"><span>$.proxy( ctx1.pon_val, ctx1 )</span> <span>width: 30, height: 30, slide</span></div></td></tr><tr><td><div id="d2"><span>$.proxy( ctx2.pon_val, ctx2 )</span> <span>width: 100, height: 100, fade</span></div></td></tr><tr><td><div id="d3"><span>$.proxy( ctx1.pon_val, ctx2 )</span> <span>width: 100, height: 100, slide</span></div></td></tr><tr><td><div id="d4"><span>$.proxy( ctx2.pon_val, ctx1 )</span> <span>width: 30, height: 30, fade</span></div></td></tr></table></td><td><input type="button" value="Ejecutar" id="b_ejecutar" style="height:190px;width:100px"></td><td width="120"><center><img src="smile1.jpg" height="50" width="50"></center></td></tr><tr><td colspan="3"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr></table></body></html>

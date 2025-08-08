@@ -1,0 +1,1 @@
+$("a").on("click",function(n){n.preventDefault();$(this);var e=$("#anim");e.css("overflow","hidden"),e.animate({width:0,padding:0},{duration:5e3,complete:function(){e.css("display","none")},step:function(){e.text(e.width())},easing:"easeInElastic"})});

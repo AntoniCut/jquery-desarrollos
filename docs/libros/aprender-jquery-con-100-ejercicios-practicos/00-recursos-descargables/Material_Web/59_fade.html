@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><title>Prueba - Efectos (fadeIn(), fadeOut(), fadeTo() y fadeToggle())</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var estado=true;
+            $("#b_fadeOut").click(function(){
+               $("#d1").fadeOut(2000);
+               resaltar("fadeOut"); 
+            });
+            $("#b_fadeIn").click(function(){
+               $("#d1").fadeIn(2000);
+               resaltar("fadeIn"); 
+            });       
+            $("#b_fadeTo").click(function(){
+               var valor=1;
+               if (estado){valor=0.3;}
+               estado=!estado;
+               resaltar("fadeTo " + valor);             
+               $("#d1").fadeTo(2000,valor,function(){
+                  resaltar("Fin fadeTo"); 
+               });
+            });                                    
+            $("#b_fadeToggle").click(function(){
+               $("#d1").fadeToggle(2000);
+               resaltar("fadeToggle"); 
+            });                                 
+            $("#b_reset").click(function(){location.reload();});
+               function resaltar(texto){
+                  $("#res").html(texto).fadeOut(2000,'linear',function(){
+                  $(this).html("").fadeIn();
+               });  
+            } 
+         });</script><style>div    {width:200px;height:150px;background-color:#00BFFF;margin:1px; padding:1px; 
+            border-style:groove; border-width:5px; font-size:18px;overflow:auto;}
+    div#d1 {width: 160px;height:118px;background-color:#40FF00;margin:1px; padding:0px;
+            border-style:solid;border-width:3px; font-size:18px;}  
+    div#msg {width: 200px;height:30px;background-color:#80FF00;margin:1px;padding:1px;
+            border-style:solid;border-width:5px; font-size:25px;border-color:#0000FF; 
+            text-align:center;} 
+    div#dr {background-color:#FFFF00;overflow:auto;width:140px; height:356px;
+            font-size:14px;}                          
+    .cb    {width: 104px; height:30px;}
+    .cbr   {width: 214px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td colspan="2"><div><center><div id="d1"></div></center></div></td></tr><tr><td><input type="button" value="fadeOut" id="b_fadeOut" class="cb"></td><td><input type="button" value="fadeIn" id="b_fadeIn" class="cb"></td></tr><tr><td><input type="button" value="fadeTo" id="b_fadeTo" class="cb"></td><td><input type="button" value="fadeToggle" id="b_fadeToggle" class="cb"></td></tr><tr><td colspan="2"><div id="msg"><font color="red"><span id="res"></font></div></td></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></center></body></html>

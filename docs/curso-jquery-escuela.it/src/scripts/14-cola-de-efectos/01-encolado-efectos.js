@@ -1,0 +1,1 @@
+(e=>{console.log("\n"),console.warn("----------  01-encolado-efectos.js  ----------");var n=e("#btnAnimar");let o=e(".texto"),i=e(".parrafo");n.on("click",function(){o.slideUp(4e3).slideDown(4e3).on("click",function(){o.finish()}).animate({fontSize:"2.4rem"},4e3).animate({fontSize:"1.2rem"},4e3),i.animate({fontSize:"2.4rem"},4e3).animate({fontSize:"1.2rem"},4e3)})})(jQuery);

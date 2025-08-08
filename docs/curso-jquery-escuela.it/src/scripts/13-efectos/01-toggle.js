@@ -1,0 +1,1 @@
+(n=>{console.log("\n"),console.warn("----------  01-toggle.js  ----------");var e=n("a");let l=n("#anim");e.on("click",function(e){e.preventDefault();let t=n(this);l.slideToggle(4e3,function(){"none"===n(this).css("display")?t.text("Mostrar"):t.text("Ocultar")})})})(jQuery);

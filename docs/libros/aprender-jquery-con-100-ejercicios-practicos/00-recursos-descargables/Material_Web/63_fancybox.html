@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><title>Prueba - fancyBox</title><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script><script type="text/javascript" src="fancyapps-fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script><script type="text/javascript" src="fancyapps-fancyBox/source/jquery.fancybox.js"></script><link rel="stylesheet" type="text/css" href="fancyapps-fancyBox/source/jquery.fancybox.css" media="screen"><link rel="stylesheet" type="text/css" href="fancyapps-fancyBox/source/helpers/jquery.fancybox-buttons.css?v=2.0.3"><script type="text/javascript" src="fancyapps-fancyBox/source/helpers/jquery.fancybox-buttons.js?v=2.0.3"></script><link rel="stylesheet" type="text/css" href="fancyapps-fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=2.0.3"><script type="text/javascript" src="fancyapps-fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=2.0.3"></script><script type="text/javascript">$(document).ready(function() {
+   			 $('.fx1').fancybox();
+    			$(".fx2").fancybox({
+    				helpers: {
+    					title : {
+    					type : 'over'
+    					},
+    					overlay : {
+    						speedIn : 500,
+    						opacity : 0.20
+    					}
+    				}
+    			});
+    			$('.fx3').fancybox({
+    				openEffect  : 'elastic',
+    				closeEffect : 'fade',
+    				prevEffect : 'elastic',
+    				nextEffect : 'fade',
+    				closeBtn  : false,
+    				helpers : {
+    					title : {
+    					type : 'inside'
+    					},
+    					buttons	: {}
+    				},
+    				afterLoad : function() {
+    					this.title = 'Imagen ' + (this.index + 1) + ' de ' + this.group.length + (this.title ? ' - ' + this.title : '');
+    				}
+    			});
+    			$('.fx4').fancybox({
+    				prevEffect : 'none',
+    				nextEffect : 'none',
+    				closeBtn  : true,
+    				arrows    : true,
+    				nextClick : true,
+    				helpers : { 
+    					thumbs : {
+    						width  : 40,
+    						height : 40
+    					}
+    				}
+    			});
+    		});</script></head><body><center><table border="1"><tr bgcolor="#ACFA58"><td colspan="3"><center><b>Efectos1</b></center></td><td colspan="3"><center><b>Efectos2</b></center></td></tr><tr><td><a class="fx1" data-fancybox-group="g1" href="smile2.jpg" title="smile"><img src="smile1.jpg" height="60" width="60"></a></td><td><a class="fx1" data-fancybox-group="g1" href="rana2.jpg" title="rana"><img src="rana1.jpg" height="60" width="60"></a></td><td><a class="fx1" data-fancybox-group="g1" href="chincheta2.jpg" title="rana"><img src="chincheta1.jpg" height="60" width="60"></a></td><td><a class="fx2" data-fancybox-group="g2" href="smile2.jpg" title="smile"><img src="smile1.jpg" height="60" width="60"></a></td><td><a class="fx2" data-fancybox-group="g2" href="rana2.jpg" title="rana"><img src="rana1.jpg" height="60" width="60"></a></td><td><a class="fx2" data-fancybox-group="g2" href="chincheta2.jpg" title="rana"><img src="chincheta1.jpg" height="60" width="60"></a></td></tr><tr bgcolor="#ACFA58"><td colspan="3"><center><b>Efectos3</b></center></td><td colspan="3"><center><b>Efectos4</b></center></td></tr><tr><td><a class="fx3" data-fancybox-group="g3" href="smile2.jpg"><img src="smile1.jpg" height="60" width="60"></a></td><td><a class="fx3" data-fancybox-group="g3" href="rana2.jpg"><img src="rana1.jpg" height="60" width="60"></a></td><td><a class="fx3" data-fancybox-group="g3" href="chincheta2.jpg"><img src="chincheta1.jpg" height="60" width="60"></a></td><td><a class="fx4" data-fancybox-group="g4" href="smile2.jpg"><img src="smile1.jpg" height="60" width="60"></a></td><td><a class="fx4" data-fancybox-group="g4" href="rana2.jpg"><img src="rana1.jpg" height="60" width="60"></a></td><td><a class="fx4" data-fancybox-group="g4" href="chincheta2.jpg"><img src="chincheta1.jpg" height="60" width="60"></a></td></tr></table></center></body></html>

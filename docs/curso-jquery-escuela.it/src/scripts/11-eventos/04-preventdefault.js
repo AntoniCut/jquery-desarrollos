@@ -1,0 +1,1 @@
+(c=>{console.log("\n"),console.warn("----------  04-preventdefault.js  ----------");var e=c(".enlace1"),o=c(".enlace2");e.click(function(){c(this).css("color","blue")}),o.click(function(e){e.preventDefault(),alert("Previene el comportamiento por defecto"),c(this).css("color","blue")})})(jQuery);

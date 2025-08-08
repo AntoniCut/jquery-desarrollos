@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><head><title>Prueba - getScript</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $("#b_getScript").click(function(){
+           $.getScript( "script1.js", function( data, textStatus, jqxhr ) {
+              $("#d1").html(data);
+           });
+        });
+        $("#b_saluda1").click(function(){
+           saluda1();
+        }); 
+        $("#b_saluda2").click(function(){
+           saluda2("Juanto");
+        });                
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 400px;
+      height:100px; font-size:20px ; background-color:#58FAF4}
+      .cb {width: 96px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="getScript" id="b_getScript" class="cb"></td><td><input type="button" value="saluda1" id="b_saluda1" class="cb"></td><td><input type="button" value="saluda2" id="b_saluda2" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cb"></td></tr><tr><td colspan="4"><div id="d1">Aqui se incorpora el texto</div></td></tr></table></center></body></html>

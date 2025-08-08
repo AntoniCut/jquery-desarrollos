@@ -1,0 +1,11 @@
+<html><head><title>Prueba toggleClass()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+             $("#bt_fondo").click(function(){
+                $("#bloque").toggleClass("fondo");
+             });
+             $("#bt_marco").click(function(){
+                $("#bloque").toggleClass("marco");
+             });
+          });</script><style>.fondo { background:#58FAF4; }
+          .marco { color: blue; 
+                   border-style:solid;
+                   border-width:3px;}</style></head><body><div id="bloque">Bloque de prueba</div><br><input type="button" value="Fondo" id="bt_fondo"> <input type="button" value="Marco" id="bt_marco"></body></html>

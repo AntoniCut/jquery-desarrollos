@@ -1,0 +1,10 @@
+<html><head><title>Prueba data</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+               $("#link1").data("dato1","valor11 para link1");
+               $("#link1").data("dato2","valor12 para link1");
+               $("#link2").data("dato1","valor21 para link2");
+               $("#link2").data("dato2","valor22 para link2");
+               console.log("Link1: dato1-valor: (" + $("#link1").data("dato1") +").");
+               console.log("Link1: dato2-valor: (" + $("#link1").data("dato2") +").");
+               console.log("Link2: dato1-valor: (" + $("#link2").data("dato1") +").");
+               console.log("Link2: dato2-valor: (" + $("#link2").data("dato2") +").");
+            });</script></head><body><a href="http://www.google.com" title="Google" id="link1">Google1</a><br><a href="http://www.google.com" title="Google" id="link2">Google2</a><br></body></html>

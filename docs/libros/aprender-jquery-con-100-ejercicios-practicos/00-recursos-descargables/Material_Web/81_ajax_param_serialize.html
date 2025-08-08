@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><title>Prueba - ajax param(), serialize() y serializeArray()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $("#b_param").click(function(){
+          var o=new Object();
+          o.nombre="Juanto";
+          o.sexo="Hombre";
+          o.edad="30";
+          var res=$.param(o);
+          $("#d1").text(res);
+        });
+        $("#b_serialize").click(function(){
+          var res=$("form").serialize();
+          $("#d2").text(res);
+        }); 
+        $("#b_serializeArray").click(function(){
+          var res="";
+          $.each($("form").serializeArray(), function(i, campo){
+            if (res!=""){
+              res+=" ";
+            }
+            res+=campo.name + ":" + campo.value + " ";
+          });          
+          $("#d3").html(res);
+        });                   
+        $("#b_reset").click(function(){
+          location.reload();
+        });
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 400px;height:30px; 
+            font-size:20px;background-color:#ACFA58}
+      .cb {width: 100px; height:30px;}
+      .cbr {width: 510px; height:30px;}</style></head><body><center><form action=""><table border="1" bgcolor="#58FAF4"><tr><td width="40">Nombre</td><td width="180"><input name="t1" type="text" value="" size="50"></td></tr><tr><td>Sexo</td><td><select name="s1" style="width:80px"><option value="Hombre" selected="selected">Hombre</option><option value="Mujer">Mujer</option></select></td></tr><tr><td><input type="button" value="param()" id="b_param" class="cb"></td><td><div id="d1"></div></td></tr><tr><td><input type="button" value="serialize()" id="b_serialize" class="cb"></td><td><div id="d2"></div></td></tr><tr><td><input type="button" value="serializeArray()" id="b_serializeArray" class="cb"></td><td><div id="d3"></div></td></tr><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr></table></form></center></body></html>

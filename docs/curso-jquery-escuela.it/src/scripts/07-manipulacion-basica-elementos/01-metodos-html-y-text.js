@@ -1,0 +1,1 @@
+(o=>{console.log("\n"),console.warn("-----  01-metodos-html--y-text.js  -----"),console.log(o("#capa1").html()),o("#capa2").text("otro <b>texto</b>..."),o("#capa3").html("otro <script> alert('hola') <\/script> <b>texto </b>...")})(jQuery);

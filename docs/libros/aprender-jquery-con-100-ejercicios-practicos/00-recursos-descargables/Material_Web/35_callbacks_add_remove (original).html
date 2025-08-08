@@ -1,0 +1,74 @@
+<!DOCTYPE html><html><head><title>Prueba - callbacks add y remove</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            $("#b_remove").prop("disabled",true);
+            var cb=$.Callbacks();        
+            $("#b_f1").click(function(){
+               f1();
+            });  
+            $("#b_f2").click(function(){
+               f2();
+            });          
+            $("#b_add1").click(function(){
+               incluir("f1");
+            }); 
+            $("#b_add2").click(function(){
+               incluir("f2");
+            });             
+            $("#b_fire").click(function(){
+               $("#res").html("");
+               cb.fire();
+            });                 
+            $("#lista").change(function(){
+               $("#b_remove").prop("disabled",false);
+            });  
+            $("#b_remove").click(function(){
+               var o=$("#lista option:selected");
+               alert(o);
+               //var nf=$("#lista").val();
+               var nf=o.val();
+               alert(nf);
+               switch (nf)
+               {
+               case "f1":
+                  cb.remove(f1);
+                  break;
+               case "f2":
+                  cb.remove(f2);
+                  break;
+               }               
+               $("#lista option:selected").remove();
+            });                       
+            $("#b_reset").click(function(){location.reload();});
+            function f1() {
+               $("#d1").slideUp().slideDown(function(){ 
+                  traza("He ejecutado f1");
+               });  
+            }
+            function f2() {
+               $("#d1").fadeOut().fadeIn(function(){ 
+                  traza("He ejecutado f2");
+               });                 
+            }
+            function traza(valor){
+               $("#res").html($("#res").html() + "<span>" + valor + "</span><br>");
+               $("span").removeClass("cResaltar");
+               $("span").last().addClass("cResaltar");               
+            }
+            function incluir(nomFuncion){
+               switch (nomFuncion)
+               {
+               case "f1":
+                  cb.add(f1);
+                  break;
+               case "f2":
+                  cb.add(f2);
+                  break;
+               }
+               $('#lista').append('<option value="' + nomFuncion + '">' + nomFuncion + '</option>');
+               traza("<span>Incluyo " + nomFuncion + "</span>");
+            }
+         });</script><style>div { margin:2px;padding:3px;}
+         img {width: 155px; height:150px;}    
+         .cb {width: 70px; height:30px;}
+         .res {border-style:none;background-color:#F3F781;width: 190px; height:160px;
+               vertical-align:top;overflow-y:scroll;padding:3px;margin:2px;}
+         .cResaltar {background-color:#9FF781;margin:1px;padding:1px;}</style></head><body><center><table border="3" style="border-color:#00BFFF"><tr><td><input type="button" value="f1" id="b_f1" class="cb"></td><td><input type="button" value="f2" id="b_f2" class="cb"></td><td><input type="button" value="add1" id="b_add1" class="cb"></td><td><input type="button" value="add2" id="b_add2" class="cb"></td><td><input type="button" value="remove" id="b_remove" class="cb"></td><td><input type="button" value="fire" id="b_fire" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cb"></td></tr></table><table border="1" id="imagenes"><tr><td style="height:170px;"><div id="d1"><img src="smile1.jpg"></div></td><td><div id="res" class="res"></div></td><td><div><select id="lista" style="width: 190px;" size="8"></select></div></td></tr></table></center></body></html>

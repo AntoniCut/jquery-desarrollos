@@ -1,0 +1,1 @@
+(r=>{console.log("\n"),console.warn("----------  04-envoltura.js  ----------"),r(".x").wrap("<article> </article>"),r("article").wrap("<section> </section>"),r("b").unwrap().unwrap()})(jQuery);

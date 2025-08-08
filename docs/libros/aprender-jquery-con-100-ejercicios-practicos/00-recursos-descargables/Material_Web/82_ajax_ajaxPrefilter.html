@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><title>Prueba - ajaxPrefilter()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $.ajaxPrefilter("json xml", function (options,localSettings,XHR) {
+          console.log(options);console.log(localSettings);console.log(XHR);
+          if (options["url"]=="noexiste.txt"){options.url="datos.txt";}
+          if (options.dataType=="json") {
+            $("#tipo").html(options.dataType);
+            $("#d2").removeClass("amarillo").addClass("naranja");
+          }
+          if (options.dataType=="xml") {
+            options.async=false;
+            $("#tipo").html(options.dataType);
+            $("#d2").removeClass("naranja").addClass("amarillo");
+          }
+        });
+        $("#b_ajax1").click(function(){
+          $.ajax({
+            url: "noexiste.txt",
+            dataType: "json",
+            success: function (data) {
+              var res="";
+              $.each( data, function( key, val ) {
+                res+="<b>Empleados (json): " + "<br></b>";
+                $.each( val, function( key2, val2 ) {
+                  res+="..<b>clave:</b> " + key2 + " <b>Nombre:</b> " + val2.nombre + " <b>Edad:</b> " + val2.edad + "<br>";
+                });
+              });
+              $("#d2").html(res);
+            }
+          });
+        });
+        $("#b_ajax2").click(function(){
+          $.ajax({
+            url: "datos.xml",
+            dataType: "xml",
+            success: function (data) {
+              var conta=0;var res="<b>Empleados (xml): " + "<br></b>";
+              $(data).find('emple').each(function(){
+                var id = $(this).attr('nombre');
+                var nombre = $(this).find('nombre').text();
+                var edad = $(this).find('edad').text();
+                res+="..<b>clave:</b> " + conta + " <b>Nombre:</b> " + nombre + " <b>Edad:</b> " + edad + "<br>";
+                conta+=1;
+              });
+              $("#d2").html(res);
+            }
+          });
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div#d1   { border-style:solid; border-width:1px; overflow:auto; 
+                 width: 320px;height:30px;font-size:26px;background-color:#ACFA58}
+      div#d2   { border-style:solid; border-width:1px; overflow:auto; 
+                 width: 320px;height:100px;font-size:20px;}
+      .naranja {background-color:#F7D358}
+      .amarillo{background-color:yellow}
+      .cb      {width: 160px; height:40px;}
+      .cbr     {width: 322px; height:30px;}</style></head><body><center><table border="1" bgcolor="#58FAF4"><tr><td><input type="button" value="ajax (json)" id="b_ajax1" class="cb"></td><td><input type="button" value="ajax (xml)" id="b_ajax2" class="cb"></td></tr><tr><td colspan="2"><div id="d1"><center><font color="red"><span id="tipo"></font></center></div></td></tr><tr><td colspan="2"><div id="d2"></div></td></tr><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr></table></center></body></html>

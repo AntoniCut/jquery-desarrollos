@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head><title>Prueba - Bordes redondeados</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $(".modelo").click(function(){
+          var e=$(this);
+          $(".elem").fadeOut(300 ,function(){
+            $(this).removeClass("uno dos tres cuatro").addClass(e.attr("id")).fadeIn(300);
+          });
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div        {background-color:#FF0000;margin:1px; padding:1px; border-style:double;
+      border-color:white ;font-size:18px;overflow:auto;}
+      div.modelo {width:100px;height:100px;background-color:#00BFFF;margin:1px; padding:1px;
+                  border-style:solid; border-width:5px; font-size:18px;overflow:auto;}
+      .uno       {border-radius:10px 10px 10px 10px;-moz-border-radius:10px 10px 10px 10px;
+                  -webkit-border-radius:10px 10px 10px 10px;o-border-radius:10px 10px 10px 10px;}
+      .dos       {border-radius:0px 20px 0px 20px;-moz-border-radius:0px 20px 0px 20px;
+                  -webkit-border-radius:0px 20px 0px 20px;o-border-radius:0px 20px 0px 20px;}
+      .tres      {border-radius:100px 100px 100px 100px;-moz-border-radius:100px 100px 100px 100px;
+                  -webkit-border-radius:100px 100px 100px 100px;o-border-radius:100px 100px 100px 100px;}
+      .cuatro    {border-radius:100px 500px 80px 300px;-moz-border-radius:100px 500px 80px 300px;
+                  -webkit-border-radius:100px 500px 80px 300px;o-border-radius:100px 500px 80px 300px;}
+      img        {border-color:blue;border-width:2px;border-style:dotted}
+      .cb        {width: 104px; height:30px;}
+      .cbr       {width: 515px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td colspan="4"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr><tr><td><div id="uno" class="uno modelo" style="background-color:#0040FF;"></div></td><td><div id="dos" class="dos modelo" style="background-color:#00FF00;"></div></td><td><div id="tres" class="tres modelo" style="background-color:#FFFF00;"></div></td><td><div id="cuatro" class="cuatro modelo" style="background-color:#F5D0A9;"></div></td></tr><tr><td colspan="4"><table><tr><td><div id="d1" class="elem" style="width:100px;height:50px;border-width:10px;"></div></td><td><input type="button" value="Bot�n" id="b1" class="cb elem"></td><td><input type="text" id="t1" value="Texto de pruebas" style="width:200px;height:30px;" class="elem"></td><td><img id="i1" src="rana1.jpg" height="60" width="60" class="elem"></td></tr></table></td></tr></table></center></body></html>

@@ -1,0 +1,1 @@
+$(document).ready(function(){console.log("\n"),console.warn("-----  practica-primeros-pasos.js  -----");let o=$(".titulo");var c=$("#anadir"),a=$("#quitar");o.css("color","orange"),o.css("background-color","#ffc"),c.click(function(){o.addClass("titular")}),a.click(function(){o.removeClass("titular")})});

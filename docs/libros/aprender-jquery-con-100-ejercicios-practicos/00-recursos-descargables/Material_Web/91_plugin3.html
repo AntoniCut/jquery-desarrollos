@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><title>Prueba - plug-in con opciones</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+         jQuery.fn.ampliar = function(cnf_u) {
+            var cnf = {
+              inc_w: 10,
+              inc_h: 10
+            }
+            jQuery.extend(cnf, cnf_u);
+            inc_w=cnf.inc_w;
+            inc_h=cnf.inc_h;              
+            this.each(function(){
+               var e=$(this);
+               var w=e.width();
+               var h=e.height();        
+               e.width(w+((w*inc_w)/100));
+               e.height(h+((h*inc_h)/100));
+            });   
+            return this;
+         };         
+         jQuery.fn.reducir = function(cnf_u) {
+            var cnf = {
+              inc_w: 2,
+              inc_h: 2
+            }
+            jQuery.extend(cnf, cnf_u);         
+            inc_w=cnf.inc_w;
+            inc_h=cnf.inc_h;             
+            this.each(function(){
+               var e=$(this);
+               var w=e.width();
+               var h=e.height();        
+               e.width(w-((w*inc_w)/100));
+               e.height(h-((h*inc_h)/100));
+            });   
+            return this;
+         };          
+        $("#b_ampliar1").click(function(){
+           $("img").ampliar();
+        });
+        $("#b_ampliar2").click(function(){
+           var cnf = {
+              inc_w: 10,
+              inc_h: 2
+           }
+           $("img").ampliar(cnf);
+        });        
+        $("#b_reducir1").click(function(){
+           var u={inc_h:40};
+           $("img").reducir(u);
+        });        
+        $("#b_reducir2").click(function(){
+           $("img").reducir();
+        });          
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 610px;
+            height:200px; font-size:20px ; background-color:#58FAF4}
+      .cb {width: 100px; height:30px;}
+      .cbr {width: 190px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="Ampliar1" id="b_ampliar1" class="cb"></td><td><input type="button" value="Ampliar2" id="b_ampliar2" class="cb"></td><td><input type="button" value="Reducir1" id="b_reducir1" class="cb"></td><td><input type="button" value="Reducir2" id="b_reducir2" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="5"><div id="d1"><center><img id="i1" src="smile1.jpg" width="50px" height="50px"> <img id="i2" src="rana1.jpg" width="50px" height="50px"></center></div></td></tr></table></center></body></html>

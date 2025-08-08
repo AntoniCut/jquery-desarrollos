@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><title>Prueba - offset(), position(), scrollLeft() y scrollTop()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var w=100; var h=100; var l=20;
+            var t=200; var vv=250; var vh=255;
+            ponValores(w,h,l,t,vv,vh);           
+            $("#b_generar").click(function(){
+               w=Math.floor((Math.random()*200)+1);
+               h=Math.floor((Math.random()*200)+1);
+               l=Math.floor((Math.random()*100)+1);
+               t=Math.floor((Math.random()*100)+1)+200;
+               vv=Math.floor((Math.random()*h)+1);
+               vh=Math.floor((Math.random()*w)+1);
+               ponValores(w,h,l,t,vv,vh);
+            });
+            $("#b_reset").click(function(){
+               location.reload();
+            });
+            $("#bloque").scroll(function(){
+               vv=$("#bloque").scrollTop();
+               vh=$("#bloque").scrollLeft();               
+               $("#v_scrollLeft").val(vh);
+               $("#v_scrollTop").val(vv);
+            });
+         });
+            function ponValores(w,h,l,t,vv,vh) {
+               var o = $("#bloque").offset();
+               o.left=l;
+               o.top=t;
+               $("#bloque").width(w);
+               $("#bloque").height(h); 
+               $("#bloque").offset(o);
+               $("#bloque").css("background","rgb(0,255,255)");
+               $("#bloque").scrollLeft(vh);
+               $("#bloque").scrollTop(vv);
+               $("#v_offset").val('Left ' + o.left + ', Top ' + o.top);
+               var p=$("#bloque").position();
+               $("#v_position").val('Left ' + p.left + ', Top ' + p.top);
+               $("#v_scrollLeft").val($("#bloque").scrollLeft());
+               $("#v_scrollTop").val($("#bloque").scrollTop());
+            }</script><style>div#padre  { border-style:dashed; border-width:3px; padding:2px; 
+         border-color:red; position:relative;}
+         div#bloque { border-style:solid; border-width:8px; padding:20px; overflow:auto;}
+         .c1 { width: 120px; text-align: center; }
+         .c2 { width: 125px; height:30px;} 
+         p   { background-color:yellow;width:200px; height:200px;overflow:auto;}</style></head><body><table border="1"><tr><td width="110">offset</td><td><input type="text" id="v_offset" class="c1" readonly="readonly"></td></tr><tr><td>position</td><td><input type="text" id="v_position" class="c1" readonly="readonly"></td></tr><tr><td>scrollLeft</td><td><input type="text" id="v_scrollLeft" class="c1" readonly="readonly"></td></tr><tr><td>scrollTop</td><td><input type="text" id="v_scrollTop" class="c1" readonly="readonly"></td></tr><table><input type="button" value="Generar" id="b_generar" class="c2"> <input type="button" value="Reset" id="b_reset" class="c2"><hr><div id="padre"><div id="bloque"><p>Muestra</p></div></div></table></table></body></html>

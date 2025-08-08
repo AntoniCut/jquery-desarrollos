@@ -1,0 +1,58 @@
+<!DOCTYPE html><html><head><title>Prueba - habilitar/deshabilitar campos.</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+      $('#v_t').focus();
+      $("#b_habilitar").prop("disabled",true);
+      $("#v_ta").val("");
+      var texto="";
+      mostrar_valores();
+      $("input, #datos, textarea").change(function(){
+        mostrar_valores();
+      });
+      $("#b_habilitar").click(function(){
+        $("input, select, textarea").not("#b_reset").prop("disabled",false);
+        $("#b_habilitar").prop("disabled",true);
+        $("#b_deshabilitar").prop("disabled",false);
+      });
+      $("#b_deshabilitar").click(function(){
+        $("input, select, textarea").not("#b_reset").prop("disabled",true);
+        $("#b_habilitar").prop("disabled",false);
+        $("#b_deshabilitar").prop("disabled",true);        
+      });
+    
+      $("#b_reset").click(function(){location.reload();});
+    });
+    function mostrar_valores(){
+      texto="";
+      $("#res").html("");
+      concatenar("text",$("#v_t").val());
+      concatenar("password",$("#v_pwd").val());
+      concatenar("textarea",$("#v_ta").val());
+      concatenar("select",$("#datos").val());
+      concatenar("radio",$("input:radio[name='gr1']:checked").val());
+      if($("#check1").is(":checked")) {concatenar("check1",$("#check1").val());}
+      if($("#check2").is(":checked")) {concatenar("check2",$("#check2").val());}
+      if($("#check3").is(":checked")) {concatenar("check3",$("#check3").val());}
+      concatenar("file",$("#file1").val());
+      $("#res").html(texto);
+    }
+    function concatenar(tipo,valor){
+      if (valor != ""){
+        var tex;
+        tex=tipo + " (<b>" + valor + "</b>)";
+        texto+=tex + "<br>";
+      }
+    }</script><style>div      {width:500px;height:300px;background-color:#00BFFF;margin:5px; padding:5px; 
+               border-style:groove; border-width:3px; font-size:18px;overflow:auto;}
+     div#msg  {width: 390px;height:150px;background-color:#A9F5A9;margin:1px;padding:1px;
+               border-style:solid;border-width:5px; font-size:12px;border-color:#0000FF; 
+               text-align:center;} 
+     .cRotulos      {border-style:none;border-color:green;width:80px;font-size:19px}
+     .cRotulos:hover {background-color:#A9D0F5;}
+     .ct            {border-style:inset;border-color:green;border-width:1px;}
+     .ct:hover      {border-color:red;border-width:3px;}   
+     textarea:hover {border-color:red;border-width:3px;}
+     select:hover   {border-color:red;border-width:3px;}
+     #radio:hover,#check:hover   {border-color:red;border-width:3px;}                                
+     .cb            {width: 104px; height:30px;}
+     .cbr           {width: 420px; height:30px;}  
+     span           {margin:2px;color:blue; font-weight:bold;} 
+     td   {height:30px;}</style></head><body><center><form name="form1" id="form1"><table bgcolor="#A9F5F2" border="1"><tr><td><table border="1"><tr><td class="cRotulos"><span>tex</span></td><td colspan="2"><input id="v_t" class="ct" size="4" style="text-align:right" type="text"></td></tr><tr><td class="cRotulos"><span>password</span></td><td colspan="2"><input id="v_pwd" class="ct" size="8" type="password"></td></tr><tr><td class="cRotulos"><span>textarea</span></td><td colspan="2" style="height:75px;width: 290px;"><textarea id="v_ta" rows="3" cols="30" style="resize:none;"></textarea></td></tr><tr><td class="cRotulos"><span>select</span></td><td colspan="2"><select id="datos" name="select" style="width:100px;"><option value="Dato1">Dato1</option><option selected="selected" value="Dato2">Dato2</option><option value="Dato3">Dato3</option><option value="Dato4">Dato4</option></select></td></tr><tr><td class="cRotulos" valign="bottom"><span>file</span></td><td class="cRotulos"><span>radios</span><br><div id="radio" style="width:105px;height:65px"><span><input type="radio" name="gr1" value="Radio1" checked="checked">Radio1</span><br><span><input type="radio" name="gr1" value="Radio2">Radio2</span><br><span><input type="radio" name="gr1" value="Radio3">Radio3</span><br></div></td><td class="cRotulos"><span>checks</span><br><div id="check" style="width:105px;height:65px"><span><input type="checkbox" id="check1" value="v1" checked="checked">Check1</span><br><span><input type="checkbox" id="check2" value="v2">Check2</span><br><span><input type="checkbox" id="check3" value="v3">Check3</span></div></td></tr><tr><td colspan="3"><input id="file1" name="file1" size="100" type="file"></td></tr><tr><td colspan="3"><center><div id="msg"><span id="res"></span></div></center></td></tr><tr><td><input id="b_habilitar" class="cb" type="button" value="habilitar"></td><td><input id="b_deshabilitar" class="cb" type="button" value="deshabilitar"></td><td><input id="b_reset" class="cb" type="button" value="reset"></td></tr></table></td><td></td></tr></table></form></center></body></html>

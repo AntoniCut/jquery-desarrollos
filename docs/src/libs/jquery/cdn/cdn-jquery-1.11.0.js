@@ -1,0 +1,1 @@
+let cdnJQuery_1_11_0={srcCdn:"https://code.jquery.com/jquery-1.11.0.min.js",integrity:"sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI=",crossOrigin:"anonymous",referrerPolicy:"no-referrer"};export{cdnJQuery_1_11_0};

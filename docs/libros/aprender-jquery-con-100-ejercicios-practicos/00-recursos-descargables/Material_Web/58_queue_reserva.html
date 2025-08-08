@@ -1,0 +1,55 @@
+<!DOCTYPE html><html><head><title>Prueba - Efectos (queue(), dequeue() y clearQueue())</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var contador=0;
+            $("#b_slide1").click(function(){
+               capa = $("#d1");
+               capa.slideUp(500);
+               capa.slideDown(500);
+               ver_cola();
+            });        
+            $("#b_fade1").click(function(){
+               capa = $("#d1");
+               capa.fadeOut(500);
+               capa.fadeIn(500);
+               ver_cola();
+            });   
+            $("#b_slide2").click(function(){
+               capa = $("#d1");
+               capa.queue("fx",function(){
+                  capa.slideUp(500);
+                  capa.slideDown(500);
+               });
+               capa.dequeue();
+               ver_cola();
+               //capa.fire();
+            });                  
+            $("#b_ver").click(function(){
+               ver_cola();
+            });                                
+            $("#b_reset").click(function(){location.reload();});
+            function resaltar(texto){
+               $("#res").html(texto).fadeOut(3000,'linear',function(){
+                  $(this).html("").fadeIn();
+               });  
+            }  
+                    
+            function resaltar(o,metodo){
+             //  ver_cola();
+               contador+=1; 
+               $("#res").html(contador + " " + metodo + "<br>" + $("#res").html());
+            }
+            function ver_cola(){
+               $("#msg").html($("#d1").queue("fx").length ); 
+              // $("#res").html($("#d1").queue("fx")+ "<br>" + $("#res").html());
+            }
+         });</script><style>div     {width: 200px;height:150px;background-color:#00BFFF;margin:1px;padding:1px;border-style:groove;
+                  border-width:5px; font-size:18px;overflow:auto;}
+         div#d1  {width: 160px;height:118px;background-color:#40FF00;margin:1px;padding:0px;border-style:solid;
+                  border-width:3px; font-size:18px;}  
+         div#d2  {width: 160px;height:118px;background-color:red;margin:1px;padding:0px;border-style:solid;
+                  border-width:3px; font-size:18px;}                                   
+         div#msg {width: 200px;height:30px;background-color:#80FF00;margin:1px;padding:1px;border-style:solid;
+                  border-width:5px; font-size:25px;border-color:#0000FF;text-align:center;} 
+         div#dr   {background-color:#FFFF00;overflow:auto;width:140px; height:322px;font-size:14px;}                          
+         .roja   {background-color:red;}         
+         .cb     {width: 104px; height:30px;}
+         .cbr    {width: 214px; height:30px;}</style></head><body><center><table border="1"><tr><td><table border="1" bgcolor="#A9F5F2"><tr><td colspan="2"><div><center><div id="d1"></div></center></div></td></tr><tr><td><input type="button" value="slide1" id="b_slide1" class="cb"></td><td><input type="button" value="fade1" id="b_fade1" class="cb"></td></tr><tr><td><input type="button" value="slide2" id="b_slide2" class="cb"></td><td><input type="button" value="fade2" id="b_fade2" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="ver cola" id="b_ver" class="cbr"></td></tr><tr><td colspan="2"><div id="msg"><font color="red"></font></div></td></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></td><td><div id="dr"><span id="res"></span></div></td></tr></table></center></body></html>

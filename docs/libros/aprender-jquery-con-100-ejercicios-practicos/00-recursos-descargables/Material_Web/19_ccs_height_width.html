@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><title>Prueba - css(), height(), width()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var w=100; var h=100; var r=100; var g=100; var b=100;
+            var w_a=w; var h_a=h; var r_a=r; var g_a=g; var b_a=b;
+            ponValores(w,h,r,g,b);           
+            $("#b_aplicar").click(function(){
+               w=$("#v_ancho").val();
+               h=$("#v_alto").val();
+               r=$("#v_rojo").val();
+               g=$("#v_verde").val();
+               b=$("#v_azul").val();                 
+               ponValores(w,h,r,g,b);
+            });
+            $("#b_reset").click(function(){
+               location.reload();
+            });
+            function ponValores(w,h,r,g,b) {
+               if (w<1||w>500){ alert("Ancho (" + w + ") no valido. (1-500)."); w=w_a; }
+               if (h<1||h>500){ alert("Alto (" + h + ") no valido. (1-500)."); h=h_a; }
+               if (r<0||r>255){ alert("Rojo (" + r + ") no valido. (0-255)."); r=r_a; }
+               if (g<0||g>255){ alert("Verde (" + g + ") no valido. (0-255)."); g=g_a; }                                             
+               if (b<0||b>255){ alert("Azul (" + b + ") no valido. (0-255)."); b=b_a; }
+               w_a=w; h_a=h; r_a=r; g_a=g; b_a=b;
+               $("div").width(w);
+               $("div").height(h);               
+               $("#bloque").css("background","rgb("+r+","+g+","+b+")");
+               $("#v_ancho").val(w);
+               $("#v_alto").val(h);
+               $("#v_rojo").val(r);
+               $("#v_verde").val(g);
+               $("#v_azul").val(b);  
+            }
+         });</script><style>div { border-style:solid; border-width:3px;}
+         .c1 { width: 70px; text-align: center;}
+         .c2 { width: 80px; height:30px;}</style></head><body><table border="1"><tr><td width="70">Ancho</td><td><input type="text" id="v_ancho" class="c1"></td></tr><tr><td>Alto</td><td><input type="text" id="v_alto" class="c1"></td></tr><tr><td>Rojo</td><td><input type="text" id="v_rojo" class="c1"></td></tr><tr><td>Verde</td><td><input type="text" id="v_verde" class="c1"></td></tr><tr><td>Azul</td><td><input type="text" id="v_azul" class="c1"></td></tr><table><input type="button" value="Aplicar" id="b_aplicar" class="c2"> <input type="button" value="Reset" id="b_reset" class="c2"><hr><div id="bloque"></div></table></table></body></html>

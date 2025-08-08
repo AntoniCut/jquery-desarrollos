@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><title>Prueba - Efectos (completo)</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            var vel=3000;
+            $("#b_mostrar1").click(function(){
+                $("#s1").hide().html("<b>Titulo</b>").fadeIn(vel);
+                $("#d2").html("Explicaci�n").fadeIn(vel);
+            });
+            $("#b_mostrar2").click(function(){
+                $("#s1").hide().html("<b>Titulo</b>").fadeIn(vel, function(){
+                    $("#d2").html("Explicaci�n").fadeIn(vel);
+                });
+            });            
+            $("#b_mostrar3").click(function(){
+                $("#s1").css("font-size", "1pt");
+                $("#s1").html("Titulo").animate({
+                'font-size': '34pt'
+                },vel);
+                $("#d2").html("Explicaci�n").fadeIn(vel);                
+            });
+            $("#b_mostrar4").click(function(){
+                $("#s1").css("font-size", "1pt");
+                $("#s1").html("Titulo").animate({
+                   'font-size': '34pt'
+                   },vel,function(){
+                      $("#d2").html("Explicaci�n").fadeIn(vel);
+                   }    
+                );             
+            });            
+            $("#b_reset").click(function(){location.reload();});
+         });</script><style>div    {width:200px;height:200px;background-color:#00BFFF;margin:1px; padding:1px; 
+            border-style:groove; border-width:5px; font-size:18px;overflow:auto;}
+    div#d1 {width: 160px;height:60px;background-color:#40FF00;margin:1px; padding:0px;
+            border-style:solid;border-width:3px; font-size:34px;}  
+    div#d2 {width: 160px;height:120px;background-color:#00FFFF;margin:1px; padding:0px;
+            border-style:solid;border-width:3px; font-size:18px;}              
+    div#msg {width: 200px;height:30px;background-color:#80FF00;margin:1px;padding:1px;
+            border-style:solid;border-width:5px; font-size:25px;border-color:#0000FF; 
+            text-align:center;} 
+    div#dr {background-color:#FFFF00;overflow:auto;width:140px; height:356px;
+            font-size:14px;}                          
+    .cb    {width: 104px; height:30px;}
+    .cbr   {width: 214px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td colspan="2"><div><center><div id="d1"><span id="s1"></div><div id="d2"></div></center></div></td></tr><tr><td><input type="button" value="mostrar1" id="b_mostrar1" class="cb"></td><td><input type="button" value="mostrar2" id="b_mostrar2" class="cb"></td></tr><tr><td><input type="button" value="mostrar3" id="b_mostrar3" class="cb"></td><td><input type="button" value="mostrar4" id="b_mostrar4" class="cb"></td></tr><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table></center></body></html>

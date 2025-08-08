@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><title>Prueba - replaceAll() y replaceWith()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            $("#b_replaceAll").click(function(){
+               $("<span class='c1'> Parrafos sustituidos con replaceAll.</span>").replaceAll("#uno");
+            });
+            $("#b_replaceWith").click(function(){
+               $("#dos").replaceWith("<span class='c2'> Parrafos sustituidos con replaceWith.</span>");
+            });     
+            $("#b_reset").click(function(){
+               location.reload();
+            });    
+         });</script><style>p { color:blue; }
+         .c1 { color: green; 
+               border-style:solid;
+               border-width:3px;}
+         .c2 { color: red; 
+               border-style:dashed;
+               border-width:3px;}</style></head><body><div id="uno"><p id="i1">1.Uno</p><p id="i2">1.Dos</p></div><hr><div id="dos"><p id="i3">2.Uno</p><p id="i4">2.Dos</p></div><hr><input type="button" value="replaceAll" id="b_replaceAll"> <input type="button" value="replaceWith" id="b_replaceWith"> <input type="button" value="reset" id="b_reset"></body></html>

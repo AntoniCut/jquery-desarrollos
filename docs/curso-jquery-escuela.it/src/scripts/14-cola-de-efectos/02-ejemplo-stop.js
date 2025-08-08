@@ -1,0 +1,1 @@
+(e=>{console.log("\n"),console.warn("----------  02-ejemplo-stop.js  ----------");var o=e("#enlace");let n=e("#tip");o.on("mouseenter",function(e){n.stop().show(2e3).css({top:e.pageY+10+"px",left:e.pageX+10+"px"})}).on("mouseleave",function(){n.stop().hide(2e3)})})(jQuery);

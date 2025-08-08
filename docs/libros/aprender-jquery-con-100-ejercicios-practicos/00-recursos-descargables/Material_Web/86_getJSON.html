@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><title>Prueba - getJSON</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $("#b_getJSON").click(function(){
+           $.getJSON("datos.txt", function(data){
+              var res="";
+              $.each( data, function( key, val ) {
+                res+="<b>Empleados (json): " + "<br></b>";
+                $.each( val, function( key2, val2 ) {
+                  res+="..<b>clave:</b> " + key2 + " <b>Nombre:</b> " + val2.nombre + " <b>Edad:</b> " + val2.edad + "<br>";
+                });
+              });
+              $("#d1").html(res);
+           });
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 400px;
+      height:100px; font-size:20px}
+      .cb {width: 120px; height:30px;}
+      .cbr {width: 276px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="getJSON" id="b_getJSON" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="2"><div id="d1">Aqui se incorpora el texto</div></td></tr></table></center></body></html>

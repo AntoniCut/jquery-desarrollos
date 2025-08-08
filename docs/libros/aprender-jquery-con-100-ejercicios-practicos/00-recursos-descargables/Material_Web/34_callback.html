@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><title>Prueba - callback</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+            $("#b_subir").click(function(){
+               var o=$("#imagenes tr").first().clone();
+               $("#imagenes tr").first().fadeOut(3000,function(){     
+                  $("#imagenes tr").first().remove();
+                  o.appendTo('#imagenes');
+                  $("#res").html("Subo una imagen"); 
+               });
+            });  
+            $("#b_bajar").click(function(){
+               var o=$("#imagenes tr").last().clone();
+               $("#imagenes tr").last().fadeOut(3000,function(){ 
+                  $("#imagenes tr").last().remove();
+                  o.prependTo('#imagenes');
+                  $("#res").html("Bajo una imagen"); 
+               });
+            });                       
+            $("#b_reset").click(function(){location.reload();});
+         });</script><style>div { overflow:left;margin:2px;padding:3px;}
+         img {width: 155px; height:150px;}    
+         .cb {width: 50px; height:30px;}</style></head><body><center><table border="3" style="border-color:#00BFFF"><tr><td><input type="button" value="Subir" id="b_subir" class="cb"></td><td><input type="button" value="Bajar" id="b_bajar" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cb"></td></tr><tr><td colspan="3" style="width: 155px;background-color:#B8E68A;"><center><span id="res">Suba o baje una imagen</span></center></td></tr></table><table border="1" id="imagenes"><tr><td><div><img src="smile1.jpg"></div></td></tr><tr><td><div><img src="chincheta1.jpg"></div></td></tr><tr><td><div><img src="rana1.jpg"></div></td></tr></table></center></body></html>

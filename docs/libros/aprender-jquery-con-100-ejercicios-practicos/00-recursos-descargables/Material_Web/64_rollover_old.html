@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head><title>Prueba - Efecto rollover</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        
+            $("#b_reset").click(function(){location.reload();});
+         });</script><style>.cImg{
+position: relative;
+z-index: 0;
+}
+.cImg:hover{
+background-color: transparent;
+z-index: 50;
+}
+.cImg span{ /*Estilos del borde y texto*/
+position: absolute;
+background-color: white;
+padding: 5px;
+left: -100px;
+border: 2px solid blue;
+visibility: hidden;
+color: #FFFF00;
+text-decoration: none;
+}
+.cImg span img{ /*CSS for enlarged image*/
+border-width: 0;
+padding: 2px;
+}
+.cImg:hover span{ /*CSS for enlarged image on hover*/
+visibility: visible;
+top: 0;
+left: 10px; /*position where enlarged image should offset horizontally */
+}                       
+    .cb    {width: 104px; height:30px;}
+    .cbr   {width: 214px; height:30px;}</style></head><body><center><table border="1" bgcolor="#A9F5F2"><tr><td colspan="2"><input type="button" value="reset" id="b_reset" class="cbr"></td></tr></table><a class="cImg" href="#r1"><img src="smile1.jpg" width="100px" height="100px"> <span><img src="smile1.jpg"></span></a><a class="cImg" href="#r1"><img src="rana1.jpg" width="100px" height="100px"> <span><img src="rana1.jpg"></span></a></center></body></html>

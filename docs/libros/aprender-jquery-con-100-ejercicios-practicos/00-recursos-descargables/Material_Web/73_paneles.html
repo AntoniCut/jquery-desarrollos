@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><title>Prueba - Paneles</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $(".secundario").hide();
+        $("div.tabs .pes:eq(0)").addClass("visible").show();
+        $(".secundario:first").show();
+        $("div.tabs .pes").click(function() {
+          $(".secundario").hide();
+          $("div.tabs .pes").removeClass("visible");
+          $(this).addClass("visible");
+          $("#"+$(this).attr("tabm")).show();
+        });
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>.principal   {float:left;width:400px;background:#2EFEF7;
+                    border-radius:20px 20px 20px 20px;clear:both;border-width:3px;}
+      div.tabs     {float:left;height:32px;width:600px;margin-top:-7px; border-bottom:1px}
+      div.tabs .pes{float:left;height:28px;line-height:31px;padding:3px;margin-bottom:-1px;
+                    background:#01A9DB;position:relative;border-radius: 15px 15px 15px 15px;
+                    color:white;font-weight:bold;}
+      div.tabs .pes:hover{background:#0431B4;cursor:pointer;}
+      div.tabs .visible, div.tabs .visible:hover {color:#01A9DB;font-weight:bold;background:#2EFEF7;
+      border-bottom:1px solid #2EFEF7;color:black}
+      .secundario  {padding:10px;font-size:1.2em;width:400px;height:150px;}
+      .cbr         {width: 100px; height:30px;}</style></head><body><input type="button" value="reset" id="b_reset" class="cbr"><br><br><div class="tabs"><div class="pes" tabm="tab1">Opci�n 1</div><div class="pes" tabm="tab2">Opci�n 2</div><div class="pes" tabm="tab3">Opci�n 3</div></div><div class="principal"><div class="secundario" id="tab1">Contenido del tab1.<br><img id="i1" src="smile1.jpg" width="50px" height="50px"><br><select id="datos" name="select" style="width:100px;"><option value="Dato1">Dato1</option><option selected="selected" value="Dato2">Dato2</option><option value="Dato3">Dato3</option><option value="Dato4">Dato4</option></select></div><div class="secundario" id="tab2">Contenido del tab2.<br><img id="i2" src="rana1.jpg" width="50px" height="50px"><div id="radio" style="width:105px;height:65px"><span><input type="radio" name="gr1" value="Radio1" checked="checked">Radio1</span><br><span><input type="radio" name="gr1" value="Radio2">Radio2</span><br><span><input type="radio" name="gr1" value="Radio3">Radio3</span><br></div></div><div class="secundario" id="tab3">Contenido del tab3<br><img id="i3" src="chincheta1.jpg" width="50px" height="50px"><br><div id="check" style="width:105px;height:65px"><span><input type="checkbox" id="check1" value="v1" checked="checked">Check1</span><br><span><input type="checkbox" id="check2" value="v2">Check2</span><br><span><input type="checkbox" id="check3" value="v3">Check3</span></div></div></div></body></html>

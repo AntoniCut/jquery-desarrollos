@@ -1,0 +1,1 @@
+(o=>{console.log("\n"),console.warn("----------  05-ejercicio5.js  ----------"),o("p").css("border","2px solid green").text("Hola Párrafo")})(jQuery);

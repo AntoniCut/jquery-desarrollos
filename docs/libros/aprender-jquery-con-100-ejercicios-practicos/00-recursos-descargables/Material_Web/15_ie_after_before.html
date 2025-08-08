@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><title>Prueba - after(), before(), insertAfter() e insertBefore()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              $("#b_after").click(function(){
+                 $("#p1").after("<p class=\"c1\"><b>Texto a�adido con after</b></p>");
+              });
+              $("#b_before").click(function(){
+                 $("#p1").before("<p class=\"c2\"><b>Texto a�adido con before</b></p>");
+              });              
+              $("#b_insertAfter").click(function(){
+                 $("<p class=\"c3\"><b>Texto a�adido con insertAfter</b></p>").insertAfter("#p1");
+              });
+              $("#b_insertBefore").click(function(){
+                 $("<p class=\"c4\"><b>Texto a�adido con insertBefore</b></p>").insertBefore("#p1");
+              }); 
+              $("#b_reset").click(function(){
+                 $("p").remove(":contains('Texto')");
+              });               
+           });</script><style>.c1 { color: blue; }
+            .c2 { color: green; }
+            .c3 { color: red; }
+            .c4 { color: cyan; }</style></head><body><p id="p1">Parrafo uno</p><input type="button" value="after" id="b_after"> <input type="button" value="before" id="b_before"> <input type="button" value="insertAfter" id="b_insertAfter"> <input type="button" value="insertBefore" id="b_insertBefore"> <input type="button" value="reset" id="b_reset"></body></html>

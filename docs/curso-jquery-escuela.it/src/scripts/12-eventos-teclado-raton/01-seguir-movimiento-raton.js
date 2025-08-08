@@ -1,0 +1,1 @@
+(e=>{console.log("\n"),console.warn("----------  01-seguir-movimiento-raton.js  ----------"),e(document).mousemove(function(o){e("#moverse").css({top:o.pageY+"px",left:o.pageX+"px"})})})(jQuery);

@@ -1,0 +1,8 @@
+<html><head><title>Prueba removeData</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+               $("#link1").data("dato1","valor11 para link1");
+               $("#link1").data("dato2","valor12 para link1");
+               console.log("Link1: dato1-valor: (" + $("#link1").data("dato1") +").");
+               console.log("Link1: dato2-valor: (" + $("#link1").data("dato2") +").");
+               $("#link1").removeData("dato1");
+               console.log("Link1: dato1-valor: (" + $("#link1").data("dato1") +").");              
+            });</script></head><body><a href="http://www.google.com" title="Google" id="link1">Google1</a><br></body></html>

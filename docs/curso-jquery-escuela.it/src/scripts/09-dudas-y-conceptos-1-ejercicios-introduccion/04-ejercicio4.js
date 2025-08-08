@@ -1,0 +1,1 @@
+(c=>{console.log("\n"),console.warn("----------  04-ejercicio4.js  ----------"),c("p").each(function(e,o){e=1.6+.25*e;c(this).css("font-size",e+"rem")})})(jQuery);

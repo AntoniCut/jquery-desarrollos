@@ -1,0 +1,8 @@
+<!DOCTYPE html><html><head><title>Prueba clone</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              $("#boton").click(function(){
+                 $("#gral div:first").clone().appendTo('#gral');
+                 $("#gral div:last").html('Final!!');
+              });
+           });</script><style>.clase1 { color:blue; }
+           .clase2 { color:green; }
+           .clase3 { color:red; }</style></head><body><div id="gral"><div class="clase1">Uno</div><div class="clase2">Dos</div><div class="clase3">Tres</div></div><input type="button" value="Clonar" id="boton"></body></html>

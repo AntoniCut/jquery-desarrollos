@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><title>Prueba - detach(), remove() y empty()</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+              var uno = $('#uno')
+              $("#uno").data("dato1","123");
+              mostrarDato("inicio");
+              $("#b_detach").click(function(){
+                 $("p").detach("#uno");
+                 mostrarDato("detach");
+              });
+              $("#b_remove").click(function(){
+                 $("p").remove("#uno");
+                 mostrarDato("remove");                 
+              });              
+              $("#b_empty").click(function(){
+                 $("#uno").empty();
+                 mostrarDato("empty");                 
+              });
+              $("#b_attach").click(function(){
+                 $("#gral p:first").before(uno);                 
+                 mostrarDato("attach");
+              }); 
+              function mostrarDato(lanzador) {
+                 alert(lanzador + ": Parrafo uno - dato1-valor: (" + $("#uno").data("dato1") +").");
+              }
+           });</script><style>.c1 { color: blue; }
+            .c2 { color: green; }</style></head><body><div id="gral"><p id="uno" class="c1">Uno</p><p id="dos" class="c2">Dos</p></div><input type="button" value="detach" id="b_detach"> <input type="button" value="remove" id="b_remove"> <input type="button" value="empty" id="b_empty"> <input type="button" value="attach" id="b_attach"></body></html>

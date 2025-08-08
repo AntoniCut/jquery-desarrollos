@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><title>Prueba -jQuery-UI-Efectos</title><link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><link rel="stylesheet" href="/resources/demos/style.css"><script src="jquery.js"></script><script src="jquery-ui.js"></script><script type="text/javascript">$(document).ready(function(){
+        $(":input[type='button']").addClass("cb");
+        var tiempo=2000;var tiempo2=3000;
+        $("#b_blind_effec").click(function(){
+          var direccion = Math.floor((Math.random()*5));
+          var direcciones = ["up","down","left","right","vertical","horizontal"];
+          var dir = direcciones[direccion];
+          resaltar("blind - "+ dir);
+          $(".elem").toggle("blind",{direction:dir},tiempo);
+        });
+        $("#b_bounce_effec").click(function(){
+          var n=Math.floor((Math.random()*5)+1);
+          var v=Math.floor((Math.random()*1)+1);
+          var vel = ["slow","fast"];
+          resaltar("bounce - times "+ n + " " + vel[n%2]);
+          $(".elem").toggle("bounce",{times: n},vel[n%2]);
+        }); 
+        $("#b_clip_effec").click(function(){
+          var numero=Math.floor((Math.random()*10));
+          var direcciones = ["vertical","horizontal"];
+          var dir = direcciones[numero%2];
+          resaltar("clip - " + dir);          
+          $(".elem").toggle("clip",{direction:dir},tiempo);
+        });       
+        $("#b_drop_effec").click(function(){
+          var numero=Math.floor((Math.random()*16));
+          var direcciones = ["up","down","left","right"];
+          var dir = direcciones[numero%4];
+          resaltar("drop - " + dir);          
+          $(".elem").toggle("drop",{direction:dir},tiempo);
+        }); 
+        $("#b_explode_effec").click(function(){
+          var numero=Math.floor((Math.random()*100));
+          numero=Math.floor(Math.sqrt(numero));
+          if (numero<2){numero=2;}
+          numero=Math.pow(numero,2);
+          resaltar("explode - pieces " + numero);          
+          $(".elem").toggle("explode",{pieces:numero},tiempo);
+        });
+        $("#b_fade_effec").click(function(){
+          resaltar("fade");          
+          $(".elem").toggle("fade",tiempo);
+        });     
+        $("#b_fold_effec").click(function(){
+          var numero=Math.floor((Math.random()*100));
+          resaltar("fold - " + numero);          
+          $(".elem").toggle("fold",{size:numero},tiempo);
+        });     
+        $("#b_highlight_effec").click(function(){
+          resaltar("highlight");  
+          $(".elem").toggle("highlight",{color:"#FF0040"},tiempo);
+        });     
+        $("#b_puff_effec").click(function(){
+          var numero=Math.floor((Math.random()*200));
+          resaltar("puff - " + numero);          
+          $(".elem").toggle("puff",{percent:numero},tiempo2);
+        });          
+        $("#b_pulsate_effec").click(function(){
+          var n=Math.floor((Math.random()*10)+1);
+          resaltar("pulsate - times "+ n );
+          $(".elem").toggle("pulsate",{times: n},tiempo2);
+        });                                          
+        $("#b_scale_effec").click(function(){
+          var direccion = Math.floor((Math.random()*30));
+          var direcciones = ["both","vertical","horizontal"];
+          var dir = direcciones[direccion%3];
+          var porcentaje=Math.floor((Math.random()*200));
+          resaltar("scale - "+ dir + " % " + porcentaje);
+          $(".elem").toggle("scale",{direction:dir,percent:porcentaje,
+            origin: "center",scale:"both"},tiempo);
+        });    
+        $("#b_shake_effec").click(function(){
+          var direccion = Math.floor((Math.random()*40));
+          var direcciones = ["up","down","left","right"];
+          var dir = direcciones[direccion%4];
+          var veces=Math.floor((Math.random()*5)+1);
+          resaltar("shake - "+ dir + " - veces " + veces);
+          $(".elem").toggle("shake",{direction:dir, times:veces},tiempo);
+        });  
+        $("#b_size_effec").click(function(){
+          var w = Math.floor((Math.random()*200));
+          var h = Math.floor((Math.random()*200)); 
+          resaltar("size - w "+ w + " - h " + h);         
+          $(".elem").effect("size",{
+            to: { width: w, height: h }
+          }, tiempo );
+        });                    
+        $("#b_reset").click(function(){location.reload();});
+        function resaltar(texto){
+          $("#res").html(texto).fadeOut(tiempo,'linear',function(){
+            $(this).html("").fadeIn();
+          });  
+        } 
+     });</script><style>#bloque1 {padding: 10px;width: 150px;height:150px; background-color:#0080FF;}
+    #bloque2 {padding: 10px;width: 100px;height:100px; background-color:#01DF01;}
+    div#msg  {width: 260px;height:30px;background-color:#80FF00;margin:1px;padding:1px;
+              border-style:solid;border-width:5px; font-size:25px;border-color:#0000FF; 
+              text-align:center;} 
+    .cb      {width: 100px; height:30px;}
+    .cbr     {width: 420px; height:50px;}</style></head><body><table border="1" bgcolor="#82FA58"><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td><table><tr><td><input type="button" value="Blind Effec" id="b_blind_effec"></td></tr><tr><td><input type="button" value="Bounce Effect" id="b_bounce_effec"></td></tr><tr><td><input type="button" value="Clip Effec" id="b_clip_effec"></td></tr><tr><td><input type="button" value="Drop Effec" id="b_drop_effec"></td></tr><tr><td><input type="button" value="Explode Effec" id="b_explode_effec"></td></tr><tr><td><input type="button" value="Fade Effec" id="b_fade_effec"></td></tr><tr><td><input type="button" value="Fold Effec" id="b_fold_effec"></td></tr><tr><td><input type="button" value="Highlight Effec" id="b_highlight_effec"></td></tr><tr><td><input type="button" value="Puff Effec" id="b_puff_effec"></td></tr><tr><td><input type="button" value="Pulsate Effec" id="b_pulsate_effec"></td></tr><tr><td><input type="button" value="Scale Effec" id="b_scale_effec"></td></tr><tr><td><input type="button" value="Shake Effec" id="b_shake_effec"></td></tr><tr><td><input type="button" value="Size Effec" id="b_size_effec"></td></tr></table></td><td bgcolor="#58FAF4" width="300"><center><table><tr><td height="40"><div id="msg"><font color="red"><span id="res"></font></div></td></tr><tr><td height="390"><div id="pral"><center><div id="bloque1" class="elem"></div><br><div id="bloque2" class="elem"></div><br><img id="i1" class="elem" src="smile1.jpg" width="50px" height="50px"></center></div></td></tr></table></center></td></tr></table></body></html>

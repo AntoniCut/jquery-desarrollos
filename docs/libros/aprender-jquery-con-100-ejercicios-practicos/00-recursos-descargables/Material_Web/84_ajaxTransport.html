@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><title>Prueba - ajaxTransport</title><script type="text/javascript" src="jquery.js"></script><script type="text/javascript">$(document).ready(function(){
+        $.ajaxTransport('xml json', function(options, originalOptions, jqXHR) {
+          return {
+            send: function(headers, complete) {
+              complete("403", "No se permiten datos " + options.dataType, {});
+            },
+            abort: function() {}
+          };
+        });
+        $.ajaxSetup({
+          async: false,
+          success:function(result)
+          {$("#d1").text(result);},
+          statusCode: {403: function(e) {alert( e.statusText );}
+          }
+        });
+        $("#b_cargar1").click(function(){
+          $.ajax({
+            url: "datos.txt",
+            dataType: "json"
+          });
+        });
+        $("#b_cargar2").click(function(){
+          $.ajax({
+            url: "datos.xml",
+            dataType: "xml"
+          });
+        });
+        $("#b_cargar3").click(function(){
+          $.ajax({
+            url: "texto.txt",
+            dataType: "text"
+          });
+        });
+
+        $("#b_reset").click(function(){location.reload();});
+      });</script><style>div { border-style:solid; border-width:1px; overflow:auto;width: 540px;
+      height:100px; font-size:20px}
+      .cb {width: 108px; height:30px;}
+      .cbr {width: 200px; height:30px;}</style></head><body><center><table border="1"><tr><td><input type="button" value="Cargar1" id="b_cargar1" class="cb"></td><td><input type="button" value="Cargar2" id="b_cargar2" class="cb"></td><td><input type="button" value="Cargar3" id="b_cargar3" class="cb"></td><td><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="4"><div id="d1">Aqui se incorpora el texto</div></td></tr></table></center></body></html>

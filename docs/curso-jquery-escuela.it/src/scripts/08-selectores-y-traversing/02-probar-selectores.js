@@ -1,0 +1,1 @@
+(r=>{console.log("\n"),console.warn("----------  03-probar-selectores.js  ----------"),r("#bsel").on("click",function(){var o=r("#selector").val(),l="#"+r("#color").val(),c="#"+r("#colorTexto").val();console.log("selector: ",o," - color: ",l),r(o).css({"background-color":l,color:c})})})(jQuery);

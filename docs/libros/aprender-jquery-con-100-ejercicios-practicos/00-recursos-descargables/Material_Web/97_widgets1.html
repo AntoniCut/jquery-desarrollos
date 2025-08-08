@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><title>Prueba -jQuery-UI-Widgets (1)</title><link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"><link rel="stylesheet" href="/resources/demos/style.css"><script src="jquery.js"></script><script src="jquery-ui.js"></script><script type="text/javascript">$(document).ready(function(){
+        $(function() {
+          $("#d1").accordion({
+            heightStyle: "fill"
+          });
+          $("#pral").resizable({
+            minHeight: 140,
+            minWidth: 180,
+            resize: function() {
+              $("#d1").accordion( "refresh" );
+            }
+          });
+          var meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                       "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre" ];
+          $("#tm").autocomplete({source: meses});
+          $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '&#x3c;Ant',
+                nextText: 'Sig&#x3e;',
+                currentText: 'Hoy',
+                monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+                'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+                'Jul','Ago','Sep','Oct','Nov','Dic'],
+                dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd/mm/yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''};
+          $.datepicker.setDefaults($.datepicker.regional['es']);          
+          $("#v_fecha").datepicker(); 
+          $("#v_link").button();
+        });
+        $("#b_dialogo").click(function(){
+          $( "#dia1" ).dialog({
+            buttons: {
+              Cerrar: function() {
+                $(this).dialog("close");
+              }
+            }
+          });        
+        }); 
+        $("#b_reset").click(function(){location.reload();});
+     });</script><style>#pral {padding: 10px;width: 300px;height: 240px;}
+    #d1{font-size: 10px;}
+    .cbr            {width: 130px; height:30px;}</style></head><body><center><input type="button" value="Di�logo" id="b_dialogo" class="cbr"> <input type="button" value="Reset" id="b_reset" class="cbr"></center><br><div id="pral" class="ui-widget-content"><div id="d1"><h3>Imagenes</h3><div><center><img id="i1" src="smile1.jpg" width="100px" height="100px"> <img id="i2" src="rana1.jpg" width="100px" height="100px"></center></div><h3>Links</h3><div><b>Links de pruebas:</b><br><a href="http://www.google.com" title="Google">Google</a><br><a href="http://www.mango.com" title="Mango">Mango</a><br><a href="http://www.youtube.com" title="Youtube">Youtube</a><br><a href="http://www.uoc.edu" title="UOC">UOC</a><br><hr></div><h3>Video</h3><div><center><video width="160" height="120" controls><source src="clase_bateria.mp4" type="video/mp4"></video><br>Video de pruebas</center></div></div></div><br><center><table border="1" bgcolor="#BEF781"><tr><td><div class="ui-widget"><label>Meses:</label></div></td><td><input type="text" id="tm" title="Teclee parte del nombre del mes a buscar."></td></tr><tr><td><div class="ui-widget"><label>Fecha:</label></div></td><td><input type="text" id="v_fecha" title="Click para desplegar calendario."></td></tr><tr><td><div class="ui-widget"><label>Link:</label></div></td><td><center><a href="http://www.google.com#" id="v_link">Google</a></center></td></tr></table></center><div id="dia1" title="Titulo del di�logo" style="display:none"><p>Cuadro de di�logo de pruebas.</p><img id="i1" src="smile1.jpg" width="50px" height="50px"></div></body></html>

@@ -1,0 +1,1 @@
+(n=>{console.log("\n"),console.warn("----------  02-get-ajax.js  ----------");var e=n("#enlace");let c=n("#salida");e.on("click",function(e){e.preventDefault(),n.get("/01-curso-jquery/src/services/contenido-get-ajax.php",function(e){e=n("<div>").html(e).find("h3");c.html(e)})})})(jQuery);

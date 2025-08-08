@@ -1,0 +1,1 @@
+(o=>{console.log("\n"),console.warn("----------  01-load.js  ----------");var n=o("#btnLoad");let a=o("#capaInfo");n.on("click",function(){a.load("/01-curso-jquery/src/services/contenido-load.php",function(){alert("Información cargada")})})})(jQuery);

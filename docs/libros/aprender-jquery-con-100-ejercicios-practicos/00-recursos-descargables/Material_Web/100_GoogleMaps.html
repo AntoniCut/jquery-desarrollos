@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><title>Prueba - jQuery - Google.maps</title><script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places"></script><script type="text/javascript" src="jquery.js"></script><script type="text/javascript" src="jquery.ui.map.js"></script><script type="text/javascript">$(document).ready(function(){
+        var mapa;
+        var latitud = parseFloat($('#v_latitud').val());
+        var longitud = parseFloat($('#v_longitud').val());
+        var marcador;
+        var coordenadas = new google.maps.LatLng(latitud, longitud);
+        var opciones = {
+          center: coordenadas,
+          zoom:18,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        mapa = new google.maps.Map($('#mapa')[0], opciones);
+        ponCoordenadas(coordenadas);
+        google.maps.event.addListener(mapa, 'click', function(event) {
+          ponCoordenadas(event.latLng);
+        });
+        function ponCoordenadas(location) {
+          if (marcador) {
+              marcador.setPosition(location);
+          } else {
+              marcador = new google.maps.Marker({
+                position: location,
+                draggable: true,
+                title: 'Arrastrar para marcar nuevas coordenadas.',
+                map: mapa
+              });
+          }
+        }
+        google.maps.event.addListener(mapa, 'click', function(event) {
+          ponCoordenadas(event.latLng);
+          jQuery('#v_latitud').val(marcador.getPosition().lat());
+          jQuery('#v_longitud').val(marcador.getPosition().lng());          
+        });
+        $("#b_reset").click(function(){location.reload();});
+     });</script><style>div#mapa {width: 500px;height:500px;}
+    .cbr     {width: 500px; height:50px;}</style></head><body><table border="1" bgcolor="#58FAF4"><tr><td colspan="2"><input type="button" value="Reset" id="b_reset" class="cbr"></td></tr><tr><td colspan="2"><div id="mapa"></div></td></tr><tr></tr><tr><td><label>Latitud</label> <input type="text" value="41.38656929469948" id="v_latitud" disabled="disabled"></td><td><label>Longitud</label> <input type="text" value="2.1648001670837402" id="v_longitud" disabled="disabled"></td></tr><tr></tr></table></body></html>
